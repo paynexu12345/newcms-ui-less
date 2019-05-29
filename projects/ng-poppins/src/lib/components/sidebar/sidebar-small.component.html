@@ -1,0 +1,54 @@
+<ul class="sidebar-menu sm" [@slideLeft]>
+  <li
+    class="menu-level1"
+    *ngFor="let firstMenu of menus"
+    [ngClass]="{ active: firstMenu.isActive }"
+    (mouseenter)="showSecondMenu(firstMenu)"
+    (mouseleave)="hideSecondMenu(firstMenu)"
+  >
+    <a
+      [href]="
+        window.location.protocol + '//' + window.location.host + firstMenu.url
+          ? firstMenu.url
+          : ''
+      "
+      class="menu-level1-header"
+      (click)="clickFirstMenu($event, firstMenu)"
+    >
+      <span
+        class="iconfont menu-level1-icon"
+        [ngClass]="firstMenu.icon"
+        [title]="firstMenu.name"
+      ></span>
+    </a>
+    <div
+      class="menu-level1-content-wrapper"
+      *ngIf="firstMenu.children && firstMenu.children.isShow"
+      [@slideLeft2]
+    >
+      <div class="menu-level1-content">
+        <div class="menu-level1-name">{{ firstMenu.name }}</div>
+        <div [@slideDown]>
+          <div
+            class="menu-level2"
+            *ngFor="let secondMenu of firstMenu.children"
+            (click)="clickSecondMenu($event, firstMenu, secondMenu)"
+          >
+            <a
+              [href]="
+                window.location.protocol +
+                '//' +
+                window.location.host +
+                secondMenu.url
+              "
+              class="menu-level2-header"
+              [ngClass]="{ active: secondMenu.isActive }"
+            >
+              <span class="iconfont icon-dot"></span>{{ secondMenu.name }}</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>

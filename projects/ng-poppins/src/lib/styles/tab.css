@@ -1,0 +1,33 @@
+.tab {
+  height: 60px;
+  border-bottom: 1px solid #e5e9f5;
+  position: relative;
+}
+.tab-nav {
+  height: 60px;
+}
+.tab-nav-item {
+  position: relative;
+  float: left;
+  height: 60px;
+  line-height: 60px;
+  padding: 0 10px;
+  color: #464457;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: Poppins_Medium;
+}
+.tab-nav-item:not(.active):hover {
+  color: #6971ff;
+}
+.tab-nav-item.active {
+  color: #3e49fb;
+}
+.tab-flag {
+  position: absolute;
+  height: 1px;
+  bottom: -1px;
+  left: 0;
+  background: #3e49fb;
+  transition:all .2s ease-out;
+}

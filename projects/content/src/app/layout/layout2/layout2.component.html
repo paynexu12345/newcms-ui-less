@@ -1,0 +1,10 @@
+<div class="page-wrapper">
+  <cms-header [config]="config?.header"></cms-header>
+  <div class="main-wrapper">
+    <div class="content-wrapper" style="left:0">
+      <div #content class="content" id="app-content">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

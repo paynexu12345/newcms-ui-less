@@ -1,0 +1,12 @@
+<div
+  [class]="rootCssClass"
+  [style.width]="stageWidth + 'px'"
+  [style.height]="stageHeight + 'px'"
+>
+  <div
+    class="carousel-item-container"
+    [style.transform]="'translate3d(' + translateX + 'px,0,0)'"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>

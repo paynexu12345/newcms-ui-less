@@ -1,0 +1,1 @@
+export const DEFAULT_TIMING = ".3s ease-in-out";

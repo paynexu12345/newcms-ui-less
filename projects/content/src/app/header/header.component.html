@@ -1,0 +1,34 @@
+<header class="page-header">
+  <ng-pop-logo></ng-pop-logo>
+  <ng-pop-header-nav [config]="config?.nav">
+    <ng-pop-header-nav-item
+    >Home</ng-pop-header-nav-item>
+    <ng-pop-header-nav-item
+    >Content</ng-pop-header-nav-item>
+  </ng-pop-header-nav>
+  <div class="r"></div>
+  <!-- <a href="javascript:;" class="iconfont icon-menu" (click)="pageModeService?.pageModeSwitch()" [class.show]="globalService.currentModule.menus?.length!=0">
+            <span class="sr-only">{{toggleMessage}}</span>
+        </a> -->
+  <!-- <div class="dropdown-wrapper" [class.icon-menu-show]="globalService.currentModule.menus?.length!=0">
+             <cms-nav *ngIf="authService.isAdminUser" [options]="partners" [activeOption]="activePartner" (ev)="handlePartnerssChange($event)"></cms-nav>
+             <cms-nav [options]= "navs" [activeOption]="globalService.currentHeaderNav" (ev)="handleModulesChange($event)"></cms-nav>
+        </div>        -->
+  <!-- <div class="welcome">
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="iconfont icon-account"></span>
+                <span class="welcome-text hidden-xs">{{welcomeMessage}}</span>
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="#">{{profileMessage}}</a>
+                </li>
+                <li>
+                    <a href="javascript:;" (click)="authService.logout()">{{logOutMessage}}</a>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+</header>

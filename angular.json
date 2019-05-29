@@ -134,6 +134,187 @@
           }
         }
       }
+    },
+    "content": {
+      "root": "projects/content/",
+      "sourceRoot": "projects/content/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/content",
+            "index": "projects/content/src/index.html",
+            "main": "projects/content/src/main.ts",
+            "polyfills": "projects/content/src/polyfills.ts",
+            "tsConfig": "projects/content/tsconfig.app.json",
+            "assets": [
+              "projects/content/src/favicon.ico",
+              "projects/content/src/assets"
+            ],
+            "styles": [
+              "projects/ng-poppins/src/lib/styles/fonts/fonts.css",
+              "projects/ng-poppins/src/lib/styles/iconfont/iconfont.css",
+              "projects/ng-poppins/src/lib/styles/reset.less",
+              "projects/ng-poppins/src/lib/styles/base.less",
+              "projects/ng-poppins/src/lib/styles/breadcrumb.less",
+              "projects/ng-poppins/src/lib/styles/button.less",
+              "projects/ng-poppins/src/lib/styles/carousel.less",
+              "projects/ng-poppins/src/lib/styles/dropdown.css",
+              "projects/ng-poppins/src/lib/styles/card.less",
+              "projects/ng-poppins/src/lib/styles/form.css",
+              "projects/ng-poppins/src/lib/styles/header.css",
+              "projects/ng-poppins/src/lib/styles/layout.css",
+              "projects/ng-poppins/src/lib/styles/link.less",
+              "projects/ng-poppins/src/lib/styles/list.css",
+              "projects/ng-poppins/src/lib/styles/nav.css",
+              "projects/ng-poppins/src/lib/styles/others.css",
+              "projects/ng-poppins/src/lib/styles/sidebar.css",
+              "projects/ng-poppins/src/lib/styles/tab.css",
+              "projects/ng-poppins/src/lib/styles/table.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/content/src/environments/environment.ts",
+                  "with": "projects/content/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "content:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "content:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "content:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/content/src/test.ts",
+            "polyfills": "projects/content/src/polyfills.ts",
+            "tsConfig": "projects/content/tsconfig.spec.json",
+            "karmaConfig": "projects/content/karma.conf.js",
+            "styles": [
+              "projects/content/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/content/src/favicon.ico",
+              "projects/content/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/content/tsconfig.app.json",
+              "projects/content/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "content-e2e": {
+      "root": "projects/content-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/content-e2e/protractor.conf.js",
+            "devServerTarget": "content:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "content:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/content-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ng-poppins": {
+      "root": "projects/ng-poppins",
+      "sourceRoot": "projects/ng-poppins/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ng-poppins/tsconfig.lib.json",
+            "project": "projects/ng-poppins/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-poppins/src/test.ts",
+            "tsConfig": "projects/ng-poppins/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-poppins/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-poppins/tsconfig.lib.json",
+              "projects/ng-poppins/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "newcms-ui-less"

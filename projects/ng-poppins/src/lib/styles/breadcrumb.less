@@ -1,0 +1,22 @@
+@import "base.less";
+.breadcrumb{
+  position: relative;
+  padding: 30px 0 ;
+  li{
+    display: inline-block;
+    color: @color_dark1;
+    font-size: 16px;
+    font-family: @font_sb;
+    a{
+      display: inline-block;
+    }
+    &:before{
+      content: "\00a0>\00a0";
+      color: @color_dark1;
+      padding: 0 10px;
+    }
+    &:first-child:before{
+      display: none;
+    }
+  }
+}

@@ -17,6 +17,20 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ng-poppin": [
+        "dist/ng-poppin"
+      ],
+      "ng-poppin/*": [
+        "dist/ng-poppin/*"
+      ],
+      "ng-poppins": [
+        "dist/ng-poppins"
+      ],
+      "ng-poppins/*": [
+        "dist/ng-poppins/*"
+      ]
+    }
   }
 }

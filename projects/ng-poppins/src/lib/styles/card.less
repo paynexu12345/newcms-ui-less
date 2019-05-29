@@ -1,0 +1,48 @@
+@import "base.less";
+@fz: 20px;
+@p: 25px;
+@br: 5px;
+.card {
+  background: #ffffff;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 16px @color_box_shadow;
+  border-radius: 5px;
+  .header {
+    position: relative;
+    height: @height_lg;
+    line-height: @height_lg;
+    border-bottom: 1px solid @color_light1;
+    padding: 0 @p;
+    font-size: @fz;
+    color: @color_dark1;
+    font-family: @font_m;
+    .r {
+      position: absolute;
+      right: @p;
+      top: 0;
+      height: @height_lg;
+    }
+  }
+  .body {
+    padding: @p;
+  }
+  .card .border {
+    border-bottom: 1px solid @color_light1;
+  }
+
+  &@{selector-sm} {
+    border-radius: @br - 1;
+    .header {
+      height: @height_lg*2 / 3;
+      line-height: @height_lg*2 / 3;
+      font-size: @fz - 4;
+      padding: 0 @p*3 / 5;
+      .r {
+        right: @p*3 / 5;
+      }
+    }
+    .body {
+      padding: @p * 3/5;
+    }
+  }
+}

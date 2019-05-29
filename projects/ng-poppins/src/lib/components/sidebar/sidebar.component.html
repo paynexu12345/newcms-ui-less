@@ -1,0 +1,10 @@
+<div [class]="rootCssClass" [style.width]="pageModeService.width">
+  <ng-pop-sidebar-lg
+    *ngIf="pageModeService.pageMode == PAGE_MODE_LARGE"
+    [menus]="config.menus"
+  ></ng-pop-sidebar-lg>
+  <ng-pop-sidebar-sm
+    *ngIf="pageModeService.pageMode == PAGE_MODE_SMALL"
+    [menus]="config.menus"
+  ></ng-pop-sidebar-sm>
+</div>
