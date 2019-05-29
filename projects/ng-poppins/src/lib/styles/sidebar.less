@@ -1,0 +1,196 @@
+@import "base.less";
+.@{classname_prefix}sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #1d1e2c;
+  padding-top: 30px;
+  overflow: auto;
+  a {
+    color: #a7abc3;
+    transition:all @anim_timing_func
+  }
+  li.active > a {
+    color: #fff;
+    background: @color_main;
+  }
+  li:not(.active) > a:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.@{classname_prefix}sidebar-menu.lg {
+  padding-bottom: 10px;
+  .menu-level1 {
+    overflow: hidden;
+    .menu-level1-header {
+      position: relative;
+      display: block;
+      height: 50px;
+      line-height: 50px;
+      padding-left: 30px;
+      .menu-level1-icon {
+        font-size: 16px;
+        color: @color_dark2;
+      }
+      .menu-level1-name {
+        margin-left: 15px;
+        font-size: 14px;
+      }
+      .arrow {
+        position: absolute;
+        right: 20px;
+        top: 0;
+        .icon-arr-r{
+          font-size: 12px;
+          font-weight: bold;
+          -webkit-transition: height @anim_timing_func;
+          transition: height @anim_timing_func;
+        }
+        
+      }
+    }
+    &.menu-open{
+      &:not(.active) .menu-level1-header {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .arrow {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+      }
+    } 
+    &.active {
+      .menu-level1-header{
+        background:#171724;
+      }
+      .menu-level1-icon{
+        color:@color_main;
+      }
+    }
+  }
+  .menu-level2{
+    .menu-level2-header {
+      display: block;
+      height: 36px;
+      line-height: 36px;
+      padding-left: 70px;
+      font-size: 12px;
+      &:not(.active):hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+      &.active {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+}
+
+.@{classname_prefix}sidebar-menu.sm{
+  .menu-level1{
+    position: relative;
+    height: 56px;
+    .menu-level1-header {
+      position: relative;
+      display: block;
+      height: 56px;
+      line-height: 56px;
+      text-align: center;
+      -webkit-transition: @anim_timing_func;
+      transition: @anim_timing_func;
+      .menu-level1-icon {
+        font-size: 20px;
+        color: #a3a3a3;
+      }
+    }
+    &:not(.active):hover .menu-level1-header {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    &.active{
+      background: @color_main;
+      .menu-level1-icon{
+        color: #fff;
+      }
+    }
+    &:hover {
+      .menu-level1-icon{
+        color: #fff;
+      }
+    }
+    .menu-level1-content-wrapper {
+      position: absolute;
+      top: 0;
+      left: 50px;
+      max-height: 400px;
+      max-width: 300px;
+      overflow: auto;
+      .menu-level1-content {
+        background: #212020;
+        overflow: hidden;
+        .menu-level2 {
+          height: 36px;
+          line-height: 36px;
+          font-size: 13px;
+          white-space: nowrap;
+          .menu-level2-header {
+            height: 36px;
+            line-height: 36px;
+            display: block;
+            color: #a3a3a3;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+            white-space: nowrap;
+            padding-right: 20px;
+            &:not(.active):hover {
+              color: #fff;
+              background: #404040;
+            }
+            &.active {
+              color: #fff;
+              background: #4b4b4b;
+            }
+          }
+        }
+      }
+    }
+  }  
+}
+// .sidebar-menu.sm .menu-level1-name {
+//   height: 40px;
+//   line-height: 40px;
+//   color: #fff;
+//   padding-left: 28px;
+//   padding-right: 15px;
+//   font-size: 14px;
+//   border-bottom: 1px solid @color_light1;
+//   white-space: nowrap;
+// }
+
+.slide-right {
+  -webkit-animation: slideRight 0.3s;
+  animation: slideRight 0.3s;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+
+@-webkit-keyframes slideRight {
+  from {
+    -webkit-transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideRight {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

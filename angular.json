@@ -171,7 +171,7 @@
               "projects/ng-poppins/src/lib/styles/list.css",
               "projects/ng-poppins/src/lib/styles/nav.css",
               "projects/ng-poppins/src/lib/styles/others.css",
-              "projects/ng-poppins/src/lib/styles/sidebar.css",
+              "projects/ng-poppins/src/lib/styles/sidebar.less",
               "projects/ng-poppins/src/lib/styles/tab.css",
               "projects/ng-poppins/src/lib/styles/table.css"
             ],

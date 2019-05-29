@@ -6,28 +6,28 @@ import {
   PageModeService,
   PAGE_MODE_SMALL,
   PAGE_MODE_LARGE
-} from "../page-mode";
+} from '../page-mode';
 import { HasConfig } from '../interfaces';
-import { commonInitCfg } from '../comp-utils';
+import { commonInitCfg, CSS_CLASS_NAME_PREFIX } from '../comp-utils';
 @Component({
-  selector: "ng-pop-sidebar",
-  templateUrl: "./sidebar.component.html"
+  selector: 'ng-pop-sidebar',
+  templateUrl: './sidebar.component.html'
 })
-export class NgPopSidebarComponent implements OnInit,HasConfig {
+export class NgPopSidebarComponent implements OnInit, HasConfig {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public elementRef: ElementRef,
     public pageModeService: PageModeService
-  ) {}
+  ) { }
   PAGE_MODE_LARGE = PAGE_MODE_LARGE;
   PAGE_MODE_SMALL = PAGE_MODE_SMALL;
   config: SideBarConfig = DEFAULT_SIDEBAR_CONFIG;
-  rootCssClass = "sidebar";
+  rootCssClass = CSS_CLASS_NAME_PREFIX + 'sidebar';
   reservedCssClasses: string[] = [];
-  @Input("config")
+  @Input('config')
   set _config(val) {
-    commonInitCfg(this,val);
+    commonInitCfg(this, val);
   }
   get _config() {
     return this.config;

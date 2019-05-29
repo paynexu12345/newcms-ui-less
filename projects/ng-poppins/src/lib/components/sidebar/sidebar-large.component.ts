@@ -1,13 +1,15 @@
-import { Component, OnInit, Input, ElementRef, Renderer } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
-import { Menu } from "./class";
-import { slideDownFactory, fadeInFactory } from "../../animations";
-let slideDown = slideDownFactory("slideDown", ".1s ease-out");
-let fadeIn = fadeInFactory();
+import { Component, OnInit, Input, ElementRef, Renderer } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Menu } from './class';
+import { slideDownFactory, fadeInFactory } from '../../animations';
+import { CSS_CLASS_NAME_PREFIX } from '../comp-utils';
+
+const slideDown = slideDownFactory('slideDown', '.1s ease-out');
+const fadeIn = fadeInFactory();
 @Component({
   animations: [fadeIn, slideDown],
-  selector: "ng-pop-sidebar-lg",
-  templateUrl: "./sidebar-large.component.html"
+  selector: 'ng-pop-sidebar-lg',
+  templateUrl: './sidebar-large.component.html'
 })
 export class NgPopSidebarLargeComponent implements OnInit {
   constructor(
@@ -17,6 +19,7 @@ export class NgPopSidebarLargeComponent implements OnInit {
     public renderer: Renderer
   ) {}
   window = window;
+  CSS_CLASS_NAME_PREFIX = CSS_CLASS_NAME_PREFIX;
   @Input() menus: Menu[] = [];
   clickFirstMenu(e, targetMenu: Menu) {
     e.preventDefault();
@@ -25,7 +28,7 @@ export class NgPopSidebarLargeComponent implements OnInit {
       return;
     }
     this.menus.forEach(menu => {
-      if (menu != targetMenu) {
+      if (menu !== targetMenu) {
         menu.isOpen = false;
       }
     });
