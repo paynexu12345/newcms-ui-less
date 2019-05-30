@@ -13,7 +13,7 @@ export class NgPopHeaderNavComponent
   constructor() {}
   items: NgPopHeaderNavItemComponent[] = [];
   config = DEFAULT_HEADER_NAV_CONFIG;
-  rootCssClass = "nav";
+  rootCssClass = "ng-pop-header-nav";
   reservedCssClasses: string[] = [];
   childComps: NgPopHeaderNavItemComponent[] = [];
   @Input("config")

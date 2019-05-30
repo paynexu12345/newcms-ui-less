@@ -15,7 +15,7 @@ export class NgPopTabsetComponent
   constructor() {}
   childComps: NgPopTabItemComponent[] = [];
   flagComp: NgPopTabFlagComponent;
-  rootCssClass = "tab";
+  rootCssClass = "ng-pop-tab";
   reservedCssClasses: string[] = [];
   config: TabConfig = DEFAULT_TAB_CONFIG;
   @Input("config")

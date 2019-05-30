@@ -17,7 +17,7 @@ export class NgPopCarouselComponent
   translateX = 0;
   autoPlayIntervalId = null;
   childComps: NgPopCarouselItemComponent[] = [];
-  rootCssClass = "carousel";
+  rootCssClass = "ng-pop-carousel";
   reservedCssClasses: string[] = [];
   config: CarouselConfig = DEFAULT_CAROUSEL_CONFIG;
   @Input("config")

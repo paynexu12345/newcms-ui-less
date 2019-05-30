@@ -1,0 +1,42 @@
+@import "base.less";
+@h : 60px;
+.@{classname_prefix}tab {
+  height: @h;
+  border-bottom: 1px solid #e5e9f5;
+  position: relative;
+  .@{classname_prefix}tab-nav {
+    height: @h;
+    .@{classname_prefix}tab-nav-item {
+      position: relative;
+      float: left;
+      height: @h;
+      line-height: @h;
+      padding: 0 10px;
+      color: @color_dark1;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: @font_m;
+      transition:color @anim_timing_func;
+      &:not(.active):hover {
+        color: lighten(@color_main,10%);
+      }
+      &.active {
+        color: @color_main;
+      }
+    }
+  }
+  .@{classname_prefix}tab-flag {
+    position: absolute;
+    height: 1px;
+    bottom: -1px;
+    left: 0;
+    background: @color_main;
+    transition:width @anim_timing_func,transform @anim_timing_func;
+  }
+  
+}
+
+
+
+
+

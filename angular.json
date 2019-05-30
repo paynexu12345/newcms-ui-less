@@ -172,7 +172,7 @@
               "projects/ng-poppins/src/lib/styles/nav.css",
               "projects/ng-poppins/src/lib/styles/others.css",
               "projects/ng-poppins/src/lib/styles/sidebar.less",
-              "projects/ng-poppins/src/lib/styles/tab.css",
+              "projects/ng-poppins/src/lib/styles/tab.less",
               "projects/ng-poppins/src/lib/styles/table.css"
             ],
             "scripts": [],

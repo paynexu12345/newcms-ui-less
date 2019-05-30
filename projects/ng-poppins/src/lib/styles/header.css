@@ -6,7 +6,7 @@
   height: 80px;
   background: #171724;
 }
-.page-header .logo {
+.page-header .ng-pop-logo {
   float: left;
   height: 80px;
   padding: 20px 0;
@@ -15,21 +15,21 @@
   overflow: hidden;
   
 }
-.page-header .logo .iconfont {
+.page-header .ng-pop-logo .iconfont {
   font-size: 36px;
   padding-left: 30px;
 }
-.page-header .logo .text {
+.page-header .ng-pop-logo .text {
   font-size: 16px;
   text-align: center;
   display: block;
 }
-.page-header .nav{
+.page-header .ng-pop-header-nav{
   height: 40px;
   padding: 20px 0;
   font-family: Poppins_Medium
 }
-.page-header .nav .item{
+.page-header .ng-pop-header-nav .ng-pop-header-nav-item{
   float: left;
   display: block;
   padding: 0 20px;
@@ -41,10 +41,10 @@
   font-size: 14px;
   text-decoration: none;
 }
-.page-header .nav .item:not(.active):hover{
+.page-header .ng-pop-header-nav .ng-pop-header-nav-item:not(.active):hover{
   background: rgba(255, 255, 255, 0.1)
 }
-.page-header .nav .item.active{
+.page-header .ng-pop-header-nav .ng-pop-header-nav-item.active{
   background: #3E49FB;
   color: #fff;
 }

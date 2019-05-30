@@ -23,7 +23,7 @@ import { HasConfig } from "../interfaces";
 })
 export class NgPopBreadcrumbComponent implements HasConfig {
   constructor() {}
-  rootCssClass = "breadcrumb";
+  rootCssClass = "ng-pop-breadcrumb";
   reservedCssClasses: string[] = [];
   config: BreadcrumbConfig = DEFAULT_BREADCRUMB_CONFIG;
   @Input("config")
