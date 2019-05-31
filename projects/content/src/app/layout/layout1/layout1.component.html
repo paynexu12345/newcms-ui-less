@@ -1,10 +1,10 @@
-<div class="page">
+<div class="ng-pop-page">
   <cms-header [config]="config?.header"></cms-header>
-  <div class="page-main">
+  <div class="ng-pop-page-main">
     <ng-pop-sidebar
       [config]="config?.sidebar"
     ></ng-pop-sidebar>
-    <div class="content" [ngStyle]="{ left: pageModeService.width }">
+    <div class="ng-pop-page-main-content" [ngStyle]="{ left: pageModeService.width }">
       <div #content id="app-content">
         <ng-content></ng-content>
       </div>

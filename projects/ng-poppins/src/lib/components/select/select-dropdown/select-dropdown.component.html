@@ -1,0 +1,15 @@
+<div
+[@fadeInDown]
+#element
+  class="ng-pop-select-dropdown"
+  [class.down-left]="direction == 'downLeft'"
+  [class.down-right]="direction == 'downRight'"
+  [class.up-left]="direction == 'upLeft'"
+  [class.up-right]="direction == 'upRight'"
+  [style.visibility]="isVisible ? 'visible' : 'hidden'"
+>
+  <ng-pop-select-dropdown-item
+    [item]="item"
+    *ngFor="let item of containerComp.config.items"
+  ></ng-pop-select-dropdown-item>
+</div>

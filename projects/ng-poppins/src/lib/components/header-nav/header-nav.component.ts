@@ -1,15 +1,17 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { NgPopHeaderNavItemComponent } from "./header-nav-item/header-nav-item.component";
+import { Component, Input, OnInit } from "@angular/core";
+import { applyMixins, commonActivateOnInit, commonInitCfg } from "../comp-utils";
+import { BaseConfigComponent, ContainerComponent } from "../interfaces";
 import { DEFAULT_HEADER_NAV_CONFIG } from "./class";
-import { commonInitCfg, applyMixins } from "../comp-utils";
-import { HasConfig, ContainerComponent } from "../interfaces";
-
+import { NgPopHeaderNavItemComponent } from "./header-nav-item/header-nav-item.component";
 @Component({
   selector: "ng-pop-header-nav",
   templateUrl: "header-nav.component.html"
 })
 export class NgPopHeaderNavComponent
-  implements OnInit, HasConfig, ContainerComponent<NgPopHeaderNavItemComponent> {
+  implements
+    OnInit,
+    BaseConfigComponent,
+    ContainerComponent<NgPopHeaderNavItemComponent> {
   constructor() {}
   items: NgPopHeaderNavItemComponent[] = [];
   config = DEFAULT_HEADER_NAV_CONFIG;
@@ -20,12 +22,19 @@ export class NgPopHeaderNavComponent
   set _config(val) {
     commonInitCfg(this, val);
   }
-  addChildComp: (comp: NgPopHeaderNavItemComponent) => void;
-  removeChildComp: (comp: NgPopHeaderNavItemComponent) => void;
+  commonAddChildComp: (comp: NgPopHeaderNavItemComponent) => void;
+  commonRemoveChildComp: (comp: NgPopHeaderNavItemComponent) => void;
+  addChildComp(comp: NgPopHeaderNavItemComponent) {
+    this.commonAddChildComp(comp);
+    this.childComps.forEach((_comp, i) => {
+      if (_comp == comp) comp.item = this.config.items[i];
+    });
+  }
+  removeChildComp(comp: NgPopHeaderNavItemComponent) {
+    this.commonRemoveChildComp(comp);
+  }
   ngOnInit() {
-    setTimeout(() => {
-      this.childComps[this.config.activeIndex].activate();
-    }, 100);
+    commonActivateOnInit(this);
   }
 }
 applyMixins(NgPopHeaderNavComponent, [ContainerComponent]);

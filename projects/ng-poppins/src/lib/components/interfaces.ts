@@ -1,4 +1,5 @@
-import { EventEmitter } from "@angular/core";
+import { EventEmitter, ElementRef } from "@angular/core";
+export type PositionType = "downLeft" |"downRight" | "upLeft" |"upRight";
 export abstract class AbstractContainerComponent {
   childComps: any[];
   addChildComp: (child: any) => void;
@@ -7,25 +8,63 @@ export abstract class AbstractContainerComponent {
 export abstract class ChildComponent {
   containerComp: any;
 }
-export abstract class HasConfig {
+export abstract class BaseConfigComponent {
   readonly reservedCssClasses?: string[];
-  rootCssClass: string;
+  readonly rootCssClass: string;
   config: { [propName: string]: any };
   _config: { [propName: string]: any };
 }
 export interface CustomizeClassNames {
   cssClasses?: string[];
 }
-
+export interface Disabled {
+  disabled?: boolean;
+}
+export interface activeIndex {
+  activeIndex: number | number[];
+}
 export class ContainerComponent<T> {
   childComps: T[];
-  addChildComp(child: T) {
+  commonAddChildComp(child: T) {
     this.childComps.push(child);
   }
-  removeChildComp(child: T) {
+  commonRemoveChildComp(child: T) {
     this.childComps.forEach((comp, index) => {
       if (child == comp) this.childComps.splice(index, 1);
     });
+  }
+  addChildComp: (child: T, ...args) => void;
+  removeChildComp: (child: T, ...args) => void;
+}
+
+export class AlignDirection{
+  isVisible = false;
+  direction: PositionType = "downLeft";
+  element: ElementRef;
+  setPosition() {
+    let pos = this.element.nativeElement.getBoundingClientRect();
+    if (pos.left + this.element.nativeElement.offsetWidth > window.innerWidth) {
+      if (
+        pos.top + this.element.nativeElement.offsetHeight >
+        window.innerHeight
+      ) {
+        this.direction = "upRight";
+      } else {
+        this.direction = "downRight";
+      }
+    } else {
+      if (
+        pos.top + this.element.nativeElement.offsetHeight >
+        window.innerHeight
+      ) {
+        this.direction = "upLeft";
+      } else {
+        this.direction = "downLeft";
+      }
+    }
+  }
+  setVisible(){
+    this.isVisible = true;
   }
 }
 
@@ -36,15 +75,15 @@ export class Activatable {
   commonActivate() {
     if (!this.isActive) {
       this.onActivate.emit(this);
-      console.log("on activated");
     }
     this.isActive = true;
   }
   commonDeactivate() {
     if (this.isActive) {
       this.onDeactivate.emit(this);
-      console.log("on de activated");
     }
     this.isActive = false;
   }
+  activate: (...args) => void;
+  deactivate: (...args) => void;
 }

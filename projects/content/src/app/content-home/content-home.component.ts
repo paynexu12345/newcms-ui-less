@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Layout1Config } from '../layout/layout.class';
 import { geneNavConfig } from '../header/generateActiveNavItem';
 import { NAVITEM_ID_CONTENT } from 'src/app-config';
-import { PageModeService } from 'projects/ng-poppins/src/public-api';
+import { PageModeService, NgPopSelectConfig, DEFAULT_NGPOP_SELECT_CONFIG } from 'projects/ng-poppins/src/public-api';
 import { BreadcrumbConfig } from 'projects/ng-poppins/src/lib/components/breadcrumb';
 import { MENUS_CONTENT } from '../../content-config';
 // import { CmsLayout1Config } from 'project-shared/layout/layout.class';
@@ -46,6 +46,7 @@ export class ContentHomeComponent implements OnInit {
       cssClasses:["c1"]
     }
   }
+  selectConfig:NgPopSelectConfig = DEFAULT_NGPOP_SELECT_CONFIG;
   ngOnInit() {
   }
 

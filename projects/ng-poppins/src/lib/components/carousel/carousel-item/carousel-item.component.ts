@@ -19,7 +19,7 @@ export class NgPopCarouselItemComponent implements OnInit, ChildComponent,Activa
     this.commonActivate();
   }
 
-  deactivte() {
+  deactivate() {
     this.commonDeactivate();
   }
   ngOnInit() {

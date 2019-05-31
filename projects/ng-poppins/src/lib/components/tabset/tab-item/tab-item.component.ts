@@ -16,7 +16,8 @@ import { applyMixins } from "../../comp-utils";
   templateUrl: "./tab-item.component.html",
   styleUrls: ["./tab-item.component.css"]
 })
-export class NgPopTabItemComponent implements OnInit, ChildComponent, Activatable {
+export class NgPopTabItemComponent
+  implements OnInit, ChildComponent, Activatable {
   constructor(
     public containerComp: NgPopTabsetComponent,
     public elementRef: ElementRef
@@ -36,7 +37,7 @@ export class NgPopTabItemComponent implements OnInit, ChildComponent, Activatabl
     }
   }
 
-  deactivte() {
+  deactivate() {
     this.commonDeactivate();
   }
 
@@ -45,7 +46,7 @@ export class NgPopTabItemComponent implements OnInit, ChildComponent, Activatabl
     if (this.containerComp) {
       this.containerComp.childComps.forEach(comp => {
         if (comp == this) comp.activate();
-        else comp.deactivte();
+        else comp.deactivate();
       });
     }
   }

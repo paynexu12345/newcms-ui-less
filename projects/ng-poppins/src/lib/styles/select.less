@@ -1,0 +1,80 @@
+@import "base.less";
+.ng-pop-select {
+  display: inline-block;
+  position: relative;
+  background: #27273d;
+  border-radius: 3px;
+  padding: 0 30px 0 20px;
+  border: 1px solid transparent;
+  cursor: default;
+  &:not(.disabled).active,&:not(.disabled):hover {
+    border-color: @color_dark2;
+    // box-shadow:0 8px 16px rgba(255, 255, 255, 0.05);
+    // .ng-pop-select-dropdown{
+    //   box-shadow:0 8px 16px rgba(0, 0, 0, 0.05);
+    // }
+  }
+  &.disabled {
+    cursor: not-allowed;
+  }
+  .ng-pop-select-default-container {
+    .ng-pop-select-default {
+      height: 40px;
+      line-height: 40px;
+      color: @color_dark2;
+    }
+    .ng-pop-select-icon {
+      position: absolute;
+      right: 10px;
+      top: 0;
+      height: 40px;
+      line-height: 40px;
+      color: @color_dark2;
+      .iconfont {
+        font-size: 12px;
+        font-weight: bold;
+      }
+    }
+  }
+  .ng-pop-select-dropdown {
+    position: absolute;
+    min-width: 100%;
+    background: #27273d;
+    border-radius: 3px;
+    .ng-pop-select-dropdown-item {
+      height: 40px;
+      line-height: 40px;
+      color: @color_dark2;
+      padding: 0 20px;
+      white-space: nowrap;
+      cursor: default;
+      &.disabled {
+        color: @color_dark2 - 30%;
+        cursor: not-allowed;
+      }
+      &:not(.disabled).active {
+        color: @color_dark2 + 30%;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      &:not(.active):not(.disabled):hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+    }
+    &.down-left {
+      top: 42px;
+      left: 0;
+    }
+    &.down-right {
+      top: 42px;
+      right: 0;
+    }
+    &.up-left {
+      bottom: 42px;
+      left: 0;
+    }
+    &.up-right {
+      bottom: 42px;
+      right: 0;
+    }
+  }
+}

@@ -1,13 +1,16 @@
 import { Component, OnInit, Input, ElementRef, Renderer } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Menu } from './class';
-import { slideDownFactory, fadeInFactory } from '../../animations';
+import { slideDownFactory, fadeInFactory, fadeInDownFactory } from '../../animations';
 import { CSS_CLASS_NAME_PREFIX } from '../comp-utils';
+import { slideInDownFactory } from '../../animations/slide-in-down.factory';
 
 const slideDown = slideDownFactory('slideDown', '.1s ease-out');
 const fadeIn = fadeInFactory();
+const fadeInDown = fadeInDownFactory();
+const slideInDown = slideInDownFactory();
 @Component({
-  animations: [fadeIn, slideDown],
+  animations: [fadeIn, slideDown,fadeInDown,slideInDown],
   selector: 'ng-pop-sidebar-lg',
   templateUrl: './sidebar-large.component.html'
 })

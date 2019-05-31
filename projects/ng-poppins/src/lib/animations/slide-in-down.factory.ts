@@ -7,28 +7,34 @@ import {
 } from "@angular/animations";
 import { DEFAULT_TIMING } from "./class";
 /**
- * How to use?
- * 
+ * @HowToUse
+ *
  * import {fadeInOutFactory} from "ngx-cms-common"
  * let fadeInOut = fadeInOutFactory("fadeInOut",".3s ease-in-out")
- * 
+ *
  * '@'component({
  *  animations:[fadeInOut]
  * })
  * <div [@fadeInOut]></div>
  * @param name
- * @param timing 
+ * @param timing
  */
-export function slideDownFactory(name = "slideDown", timing = DEFAULT_TIMING) {
+export function slideInDownFactory(
+  name = "slideInDown",
+  timing = DEFAULT_TIMING,
+  offset = "-100%"
+) {
   return trigger(name, [
     transition("void => *", [
       style({
-        height:0
+        height:0,
+        opacity:0
       }),
       animate(
         timing,
         style({
-          height:"*"
+          height:"*",
+          opacity:1
         })
       )
     ]),

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { NgPopCarouselItemComponent } from "./carousel-item/carousel-item.component";
 import { CarouselConfig, DEFAULT_CAROUSEL_CONFIG } from "./class";
-import { ContainerComponent, HasConfig } from "../interfaces";
+import { ContainerComponent, BaseConfigComponent } from "../interfaces";
 import { commonInitCfg, applyMixins } from "../comp-utils";
 
 @Component({
@@ -10,7 +10,7 @@ import { commonInitCfg, applyMixins } from "../comp-utils";
   styleUrls: ["./carousel.component.css"]
 })
 export class NgPopCarouselComponent
-  implements OnInit, ContainerComponent<NgPopCarouselItemComponent>, HasConfig {
+  implements OnInit, ContainerComponent<NgPopCarouselItemComponent>, BaseConfigComponent {
   constructor() {}
   stageWidth: number = 0;
   stageHeight = 0;
@@ -26,9 +26,14 @@ export class NgPopCarouselComponent
     this.init();
   }
 
-  addChildComp: (item: NgPopCarouselItemComponent) => void;
-
-  removeChildComp: (item: NgPopCarouselItemComponent) => void;
+  commonAddChildComp: (comp: NgPopCarouselItemComponent) => void;
+  commonRemoveChildComp: (comp: NgPopCarouselItemComponent) => void;
+  addChildComp(comp: NgPopCarouselItemComponent){
+    this.commonAddChildComp(comp);
+  };
+  removeChildComp(comp: NgPopCarouselItemComponent){
+    this.commonRemoveChildComp(comp);
+  };
 
   setStageSize(cfg: CarouselConfig) {
     this.stageWidth = cfg.width;
@@ -41,7 +46,7 @@ export class NgPopCarouselComponent
     }
     this.childComps.forEach((c, j) => {
       if (i == j) c.activate();
-      else c.deactivte();
+      else c.deactivate();
     });
   }
 

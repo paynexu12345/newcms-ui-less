@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { ContainerComponent, HasConfig } from "../interfaces";
+import { ContainerComponent, BaseConfigComponent } from "../interfaces";
 import { NgPopTabItemComponent } from "./tab-item/tab-item.component";
 import { TabConfig, DEFAULT_TAB_CONFIG } from "./class";
 import { NgPopTabFlagComponent } from "./tab-flag/tab-flag.component";
@@ -11,7 +11,7 @@ import { commonInitCfg, applyMixins } from "../comp-utils";
   styleUrls: ["./tabset.component.css"]
 })
 export class NgPopTabsetComponent
-  implements OnInit, ContainerComponent<NgPopTabItemComponent>, HasConfig {
+  implements OnInit, ContainerComponent<NgPopTabItemComponent>, BaseConfigComponent {
   constructor() {}
   childComps: NgPopTabItemComponent[] = [];
   flagComp: NgPopTabFlagComponent;
@@ -22,8 +22,14 @@ export class NgPopTabsetComponent
   set _config(val) {
     commonInitCfg(this, val);
   }
-  addChildComp: (comp: NgPopTabItemComponent) => void;
-  removeChildComp: (comp: NgPopTabItemComponent) => void;
+  commonAddChildComp: (comp: NgPopTabItemComponent) => void;
+  commonRemoveChildComp: (comp: NgPopTabItemComponent) => void;
+  addChildComp(comp: NgPopTabItemComponent){
+    this.commonAddChildComp(comp);
+  };
+  removeChildComp(comp: NgPopTabItemComponent){
+    this.commonRemoveChildComp(comp);
+  };
 
   ngOnInit() {
     setTimeout(() => {

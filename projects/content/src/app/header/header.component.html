@@ -1,4 +1,4 @@
-<header class="page-header">
+<header class="ng-pop-page-header">
   <ng-pop-logo></ng-pop-logo>
   <ng-pop-header-nav [config]="config?.nav">
     <ng-pop-header-nav-item
@@ -6,7 +6,9 @@
     <ng-pop-header-nav-item
     >Content</ng-pop-header-nav-item>
   </ng-pop-header-nav>
-  <div class="r"></div>
+  <div class="ng-pop-right-container">
+        <ng-pop-select [config]="selectConfig"></ng-pop-select>
+  </div>
   <!-- <a href="javascript:;" class="iconfont icon-menu" (click)="pageModeService?.pageModeSwitch()" [class.show]="globalService.currentModule.menus?.length!=0">
             <span class="sr-only">{{toggleMessage}}</span>
         </a> -->

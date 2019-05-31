@@ -7,13 +7,13 @@ import {
   PAGE_MODE_SMALL,
   PAGE_MODE_LARGE
 } from '../page-mode';
-import { HasConfig } from '../interfaces';
+import { BaseConfigComponent } from '../interfaces';
 import { commonInitCfg, CSS_CLASS_NAME_PREFIX } from '../comp-utils';
 @Component({
   selector: 'ng-pop-sidebar',
   templateUrl: './sidebar.component.html'
 })
-export class NgPopSidebarComponent implements OnInit, HasConfig {
+export class NgPopSidebarComponent implements OnInit, BaseConfigComponent {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,

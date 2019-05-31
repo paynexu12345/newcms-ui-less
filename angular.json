@@ -140,7 +140,11 @@
       "sourceRoot": "projects/content/src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "less"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -162,18 +166,14 @@
               "projects/ng-poppins/src/lib/styles/breadcrumb.less",
               "projects/ng-poppins/src/lib/styles/button.less",
               "projects/ng-poppins/src/lib/styles/carousel.less",
-              "projects/ng-poppins/src/lib/styles/dropdown.css",
               "projects/ng-poppins/src/lib/styles/card.less",
-              "projects/ng-poppins/src/lib/styles/form.css",
-              "projects/ng-poppins/src/lib/styles/header.css",
-              "projects/ng-poppins/src/lib/styles/layout.css",
+              "projects/ng-poppins/src/lib/styles/header.less",
+              "projects/ng-poppins/src/lib/styles/layout.less",
               "projects/ng-poppins/src/lib/styles/link.less",
-              "projects/ng-poppins/src/lib/styles/list.css",
-              "projects/ng-poppins/src/lib/styles/nav.css",
-              "projects/ng-poppins/src/lib/styles/others.css",
               "projects/ng-poppins/src/lib/styles/sidebar.less",
               "projects/ng-poppins/src/lib/styles/tab.less",
-              "projects/ng-poppins/src/lib/styles/table.css"
+              "projects/ng-poppins/src/lib/styles/table.less",
+              "projects/ng-poppins/src/lib/styles/select.less"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -286,6 +286,11 @@
       "sourceRoot": "projects/ng-poppins/src",
       "projectType": "library",
       "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "less"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

@@ -1,0 +1,61 @@
+@import "base.less";
+@H:80px;
+@h:40px;
+@p:20px;
+.ng-pop-page-header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: @H;
+  background: #171724;
+  .ng-pop-logo {
+    float: left;
+    height: @H;
+    padding: @p 0;
+    line-height: @h;
+    color: #fff;
+    overflow: hidden;
+    .iconfont {
+      font-size: 36px;
+      padding-left: 30px;
+    }
+    .text {
+      font-size: 16px;
+      text-align: center;
+      display: block;
+    }
+  }
+  .ng-pop-header-nav{
+    height: @H;
+    padding: @p 0;
+    float: left;
+    font-family: Poppins_Medium;
+    .ng-pop-header-nav-item{
+      float: left;
+      display: block;
+      padding: 0 @p;
+      margin-right: 10px;
+      height: @h;
+      line-height: @h;
+      border-radius: 3px;
+      color: @color_dark2;
+      font-size: 14px;
+      text-decoration: none;
+      &:not(.active):hover{
+        background: rgba(255, 255, 255, 0.1)
+      }
+      &.active{
+        background: #3E49FB;
+        color: #fff;
+      }
+    }
+  }
+  .ng-pop-right-container{
+    position: absolute;
+    right: 30px;
+    top: 0;
+    height: @H;
+    padding: @p 0;
+  }
+}

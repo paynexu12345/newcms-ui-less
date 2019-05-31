@@ -1,7 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { BreadcrumbConfig, DEFAULT_BREADCRUMB_CONFIG } from "./class";
 import { commonInitCfg } from "../comp-utils";
-import { HasConfig } from "../interfaces";
+import { BaseConfigComponent } from "../interfaces";
 @Component({
   selector: "ng-pop-breadcrumb",
   template: `
@@ -21,7 +21,7 @@ import { HasConfig } from "../interfaces";
     </ol>
   `
 })
-export class NgPopBreadcrumbComponent implements HasConfig {
+export class NgPopBreadcrumbComponent implements BaseConfigComponent {
   constructor() {}
   rootCssClass = "ng-pop-breadcrumb";
   reservedCssClasses: string[] = [];

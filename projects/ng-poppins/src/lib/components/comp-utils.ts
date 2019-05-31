@@ -1,19 +1,26 @@
-export const CSS_CLASS_NAME_PREFIX = 'ng-pop-';
+export const CSS_CLASS_NAME_PREFIX = "ng-pop-";
 export function commonInitCfg(component, cfg) {
   if (cfg) {
     component.config = Object.assign({}, component.config || {}, cfg);
-    if (!component.config.cssClasses) { component.config.cssClasses = []; }
+    if (!component.config.cssClasses) {
+      component.config.cssClasses = [];
+    }
     if (component.config.cssClasses.length > 0) {
       const t = [...component.config.cssClasses];
       t.unshift(component.rootCssClass);
-      if (component.reservedCssClasses && component.reservedCssClasses instanceof Array) {
+      if (
+        component.reservedCssClasses &&
+        component.reservedCssClasses instanceof Array
+      ) {
         component.reservedCssClasses.forEach(r => {
           t.forEach((c, i) => {
-            if (r === c) { t.splice(i, 1); }
+            if (r === c) {
+              t.splice(i, 1);
+            }
           });
         });
       }
-      component.rootCssClass = t.join(' ');
+      component.rootCssClass = t.join(" ");
     }
   }
 }
@@ -25,4 +32,21 @@ export function applyMixins(derivedCtor: any, baseCtors: any[]) {
       }
     });
   });
+}
+export function filterActiveItem<T>(items:T[]):T{
+  let ret = items.filter(item=>{return (item as any).isActive})[0];
+  if(!ret) ret = items[0];
+  return ret;
+}
+export function commonActivateOnInit(component) {
+  setTimeout(() => {
+    if (
+      component.childComps &&
+      component.childComps instanceof Array &&
+      component.config &&
+      component.config.activeIndex >= 0 &&
+      component.config.activeIndex < component.childComps.length - 1
+    )
+      component.childComps[component.config.activeIndex].activate();
+  }, 100);
 }

@@ -37,7 +37,7 @@
         <ng-pop-tab-item>Tab1</ng-pop-tab-item>
         <ng-pop-tab-item>Tab2</ng-pop-tab-item>
       </ng-pop-tabset>
-        <!-- <div class="tab">
+      <!-- <div class="tab">
           <ul class="tab-nav">
             <li class="tab-nav-item active">Tab1</li>
             <li class="tab-nav-item">Tab2</li>
@@ -84,7 +84,7 @@
     </div>
     <div class="body">
       <div class="nm25" style="margin-top:-25px;">
-        <table class="table">
+        <table class="ng-pop-table">
           <thead>
             <tr>
               <th>ID</th>
@@ -117,11 +117,20 @@
   <div class="card">
     <div class="header">Carousel</div>
     <div class="body">
-        <ng-pop-carousel>
-          <ng-pop-carousel-item>第一</ng-pop-carousel-item>
-          <ng-pop-carousel-item>第二</ng-pop-carousel-item>
-          <ng-pop-carousel-item>第三</ng-pop-carousel-item>
-        </ng-pop-carousel>
+      <ng-pop-carousel>
+        <ng-pop-carousel-item>第一</ng-pop-carousel-item>
+        <ng-pop-carousel-item>第二</ng-pop-carousel-item>
+        <ng-pop-carousel-item>第三</ng-pop-carousel-item>
+      </ng-pop-carousel>
+    </div>
+  </div>
+  <div class="card">
+    <div class="header">Select</div>
+    <div class="body">
+      
+      <div>
+          <ng-pop-select [config]="selectConfig"></ng-pop-select>
+      </div>
     </div>
   </div>
 </layout1>

@@ -1,1 +1,1 @@
-export const DEFAULT_TIMING = ".3s ease-in-out";
+export const DEFAULT_TIMING = ".15s cubic-bezier(.645, .045, .355, 1)";

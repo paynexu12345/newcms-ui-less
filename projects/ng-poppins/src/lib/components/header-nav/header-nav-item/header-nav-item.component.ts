@@ -29,8 +29,6 @@ export class NgPopHeaderNavItemComponent
   }
   ngOnInit() {
     this.containerComp.addChildComp(this);
-    if (this.containerComp.config)
-      this.item = this.containerComp.config.items[0];
   }
 }
 applyMixins(NgPopHeaderNavItemComponent, [ChildComponent, Activatable]);
