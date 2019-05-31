@@ -15,38 +15,57 @@ import { MENUS_CONTENT } from '../../content-config';
 @Component({
   selector: 'app-content-home',
   templateUrl: './content-home.component.html',
-  styles:[`
-    ./content-home.component.less
-  `]
+  styleUrls: ['./content-home.component.less'
+    ]
 })
 export class ContentHomeComponent implements OnInit {
 
-  constructor(public pageModeService:PageModeService) { }
-  breadcrumbConfig:BreadcrumbConfig = {
-    items:[
+  constructor(public pageModeService: PageModeService) { }
+  breadcrumbConfig: BreadcrumbConfig = {
+    items: [
       {
-        name:"Content",
-        routerLink:"/content/home",
-        queryParams:{
-          param1:"hh",
-          param2:"gg"
+        name: "Content",
+        routerLink: "/content/home",
+        queryParams: {
+          param1: "hh",
+          param2: "gg"
         }
       },
       {
-        name:"Content"
+        name: "Content"
       }
     ]
   };
-  cmsLayout1Config:Layout1Config = {
+  cmsLayout1Config: Layout1Config = {
     header: {
       nav: geneNavConfig(NAVITEM_ID_CONTENT)
     },
     sidebar: {
       menus: MENUS_CONTENT,
-      cssClasses:["c1"]
+      cssClasses: ["c1"]
     }
-  }
-  selectConfig:NgPopSelectConfig = DEFAULT_NGPOP_SELECT_CONFIG;
+  };
+  selectConfig: NgPopSelectConfig = DEFAULT_NGPOP_SELECT_CONFIG;
+  selectConfig2: NgPopSelectConfig = {
+    width: "160px",
+    items: [
+      {
+        id: 1,
+        name: "Content Provider",
+        isActive: false,
+        disabled: true
+      },
+      {
+        id: 2,
+        name: "Content Provider2",
+        isActive: true
+      }
+    ],
+    textKey: "name",
+    idKey: "id",
+    cssClasses: ["white"]
+    // disabled:true
+  };
   ngOnInit() {
   }
 

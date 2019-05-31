@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
+import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   NgPopSidebarSmallComponent,
@@ -25,6 +26,7 @@ import { NgPopSelectDefaultComponent } from './components/select/select-default/
 import { NgPopSelectDropdownComponent } from './components/select/select-dropdown/select-dropdown.component';
 import { NgPopSelectDropdownItemComponent } from './components/select/select-dropdown-item/select-dropdown-item.component';
 import { NgPopSelectService } from './components/select/select.service';
+import { NgPopSelectInputComponent } from './components/select/select-input/select-input.component';
 
 @NgModule({
   declarations: [
@@ -44,9 +46,10 @@ import { NgPopSelectService } from './components/select/select.service';
     NgPopSelectIconComponent,
     NgPopSelectDefaultComponent,
     NgPopSelectDropdownComponent,
-    NgPopSelectDropdownItemComponent
+    NgPopSelectDropdownItemComponent,
+    NgPopSelectInputComponent
   ],
-  imports: [CommonModule, RouterModule, BrowserAnimationsModule],
+  imports: [CommonModule, RouterModule, BrowserAnimationsModule, FormsModule],
   exports: [
     NgPopSidebarSmallComponent,
     NgPopSidebarLargeComponent,
@@ -65,8 +68,9 @@ import { NgPopSelectService } from './components/select/select.service';
     NgPopSelectIconComponent,
     NgPopSelectDefaultComponent,
     NgPopSelectDropdownComponent,
-    NgPopSelectDropdownItemComponent
+    NgPopSelectDropdownItemComponent,
+    NgPopSelectInputComponent
   ],
-  providers: [PageModeService,NgPopSelectService]
+  providers: [PageModeService, NgPopSelectService]
 })
-export class NgPoppinsModule {}
+export class NgPoppinsModule { }

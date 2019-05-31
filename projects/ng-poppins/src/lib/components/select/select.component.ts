@@ -4,7 +4,8 @@ import {
   Output,
   EventEmitter,
   HostListener,
-  Input
+  Input,
+  OnDestroy
 } from "@angular/core";
 import {
   Activatable,
@@ -14,7 +15,9 @@ import {
 import {
   applyMixins,
   commonInitCfg,
-  filterActiveItem
+  filterActiveItem,
+  commonRegisterComponent,
+  commonCancelComponent
 } from "../comp-utils";
 import {
   DEFAULT_NGPOP_SELECT_CONFIG,
@@ -24,6 +27,7 @@ import { NgPopSelectDropdownItemComponent } from "./select-dropdown-item/select-
 import { NgPopSelectDefaultComponent } from ".";
 import { NgPopSelectIconComponent } from "./select-icon/select-icon.component";
 import { NgPopSelectService } from './select.service';
+import { NgPopSelectInputComponent } from './select-input/select-input.component';
 
 @Component({
   selector: "ng-pop-select",
@@ -32,13 +36,14 @@ import { NgPopSelectService } from './select.service';
 })
 export class NgPopSelectComponent
   implements
-    OnInit,
-    Activatable,
-    BaseConfigComponent,
-    ContainerComponent<NgPopSelectDropdownItemComponent> {
+  OnInit,
+  OnDestroy,
+  Activatable,
+  BaseConfigComponent,
+  ContainerComponent<NgPopSelectDropdownItemComponent> {
   constructor(
-    public selectService:NgPopSelectService
-  ) {}
+    public selectService: NgPopSelectService
+  ) { }
 
   isActive = false;
   config = DEFAULT_NGPOP_SELECT_CONFIG;
@@ -48,6 +53,8 @@ export class NgPopSelectComponent
   defaultItemComp: NgPopSelectDefaultComponent;
   iconItemComp: NgPopSelectIconComponent;
   activeItem: NgPopSelectItem;
+  inputComp: NgPopSelectInputComponent;
+
   @Input("config")
   set _config(val) {
     commonInitCfg(this, val);
@@ -81,11 +88,11 @@ export class NgPopSelectComponent
     this.commonRemoveChildComp(comp);
   }
 
-  @HostListener("click",["$event"])
+  @HostListener("click", ["$event"])
   onclick($event) {
     $event.stopPropagation();
     this.selectService.deactivateAllExcept(this);
-    if(!this.config.disabled){
+    if (!this.config.disabled) {
       if (!this.isActive) {
         this.activate();
       } else {
@@ -97,7 +104,7 @@ export class NgPopSelectComponent
   ngOnInit() {
     this.selectService.addChildComp(this);
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.selectService.removeChildComp(this);
   }
 }

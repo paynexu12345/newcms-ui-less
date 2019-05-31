@@ -22,6 +22,26 @@
 @selector-sm: .sm;
 @selector-lg: .lg;
 
+.placeholder(@rules) {
+  &::-webkit-input-placeholder {
+      @rules();
+  }
+  &:-moz-placeholder {
+      @rules();
+  }
+  &::-moz-placeholder {
+      @rules();
+  }
+  &:-ms-input-placeholder {
+      @rules();
+  }
+};
+.ell(){
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .plr(@v:30px) {
   padding-left: @v;
   padding-right: @v;

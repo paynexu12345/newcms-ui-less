@@ -5,7 +5,8 @@ import {
   EventEmitter,
   HostListener,
   ElementRef,
-  ViewChild
+  ViewChild,
+  OnDestroy
 } from "@angular/core";
 import { ChildComponent, Activatable } from "../../interfaces";
 import { NgPopTabsetComponent } from "../tabset.component";
@@ -17,7 +18,7 @@ import { applyMixins } from "../../comp-utils";
   styleUrls: ["./tab-item.component.css"]
 })
 export class NgPopTabItemComponent
-  implements OnInit, ChildComponent, Activatable {
+  implements OnInit, OnDestroy, ChildComponent, Activatable {
   constructor(
     public containerComp: NgPopTabsetComponent,
     public elementRef: ElementRef
@@ -49,6 +50,10 @@ export class NgPopTabItemComponent
         else comp.deactivate();
       });
     }
+  }
+
+  onDestroy() {
+    
   }
 
   ngOnInit() {

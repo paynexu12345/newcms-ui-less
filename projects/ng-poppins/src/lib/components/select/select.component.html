@@ -1,9 +1,10 @@
 <div [class]="rootCssClass" [class.active]="isActive" [class.disabled]="config.disabled" [style.width]="config.width">
   <div class="ng-pop-select-default-container">
     <ng-pop-select-default
-      *ngIf="activeItem"
+      *ngIf="activeItem && !isActive"
       [item]="activeItem"
     ></ng-pop-select-default>
+    <ng-pop-select-input *ngIf="isActive"></ng-pop-select-input>
     <ng-pop-select-icon></ng-pop-select-icon>
   </div>
   <ng-pop-select-dropdown *ngIf="isActive"></ng-pop-select-dropdown>

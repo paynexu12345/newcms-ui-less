@@ -7,7 +7,7 @@ import { NgPopSelectComponent } from '../select.component';
   templateUrl: "./select-icon.component.html",
   styleUrls: ["./select-icon.component.less"]
 })
-export class NgPopSelectIconComponent implements OnInit,ChildComponent{
-  constructor(public containerComp: NgPopSelectComponent) {}
-  ngOnInit() {}
+export class NgPopSelectIconComponent implements OnInit, ChildComponent {
+  constructor(public containerComp: NgPopSelectComponent) { }
+  ngOnInit() { }
 }

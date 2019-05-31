@@ -9,28 +9,29 @@ import { ChildComponent, PositionType, AlignDirection } from "../../interfaces";
 import { NgPopSelectComponent } from "../select.component";
 import { applyMixins } from "../../comp-utils";
 import { fadeInDownFactory } from '../../../animations';
-let fadeInDown = fadeInDownFactory();
+const fadeInDown = fadeInDownFactory();
 @Component({
   selector: "ng-pop-select-dropdown",
   templateUrl: "./select-dropdown.component.html",
   styleUrls: ["./select-dropdown.component.less"],
-  animations:[fadeInDown]
+  animations: [fadeInDown]
 })
 export class NgPopSelectDropdownComponent
   implements OnInit, ChildComponent, AlignDirection {
-  constructor(public containerComp: NgPopSelectComponent) {}
+  constructor(public containerComp: NgPopSelectComponent) { }
   isVisible = false;
   direction: PositionType = "downLeft";
   @ViewChild("element") element: ElementRef;
   setPosition: () => void;
   setVisible: () => void;
 
-  @HostListener("window:mousewheel",["$event"])
-  onmousewheel($event){
+  @HostListener("window:mousewheel", ["$event"])
+  onmousewheel($event) {
     this.containerComp.deactivate();
   }
-  @HostListener("window:click",["$event"])
-  onclickWindow($event){
+  
+  @HostListener("window:click", ["$event"])
+  onclickWindow($event) {
     this.containerComp.deactivate();
   }
   ngOnInit() {

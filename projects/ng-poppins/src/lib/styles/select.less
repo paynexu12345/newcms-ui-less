@@ -1,12 +1,53 @@
 @import "base.less";
+@p:0 30px 0 20px;
+.placeholder({
+  color:lighten(@color_dark2,-15%);
+});
+.white{
+  .placeholder({
+    color:lighten(@color_dark2,-45%);
+  });
+}
 .ng-pop-select {
   display: inline-block;
   position: relative;
+  height: 40px;
   background: #27273d;
+  font-size: 14px;
+  font-family: @font_r;
   border-radius: 3px;
-  padding: 0 30px 0 20px;
   border: 1px solid transparent;
   cursor: default;
+  &.white{
+    background:#fff;
+    border-color: @color_light1;
+    &:not(.disabled).active,&:not(.disabled):hover{
+      border-color: @color_main;
+    }
+    .ng-pop-select-default-container{
+      .ng-pop-select-default{
+        color:@color_dark2;
+      }
+      .ng-pop-select-input{
+        color:@color_dark2;
+      }
+    }
+    .ng-pop-select-dropdown{
+      background: #fff;
+      .ng-pop-select-dropdown-item{
+        &.disabled {
+          color: lighten(@color_dark2,30%);
+        }
+        &:not(.disabled).active {
+          color: @color_dark2 + 30%;
+          background: rgba(0,0,0,.1);
+        }
+        &:not(.active):not(.disabled):hover {
+          background: rgba(0,0,0,.05);
+        }
+      }
+    }
+  }
   &:not(.disabled).active,&:not(.disabled):hover {
     border-color: @color_dark2;
     // box-shadow:0 8px 16px rgba(255, 255, 255, 0.05);
@@ -21,7 +62,21 @@
     .ng-pop-select-default {
       height: 40px;
       line-height: 40px;
+      padding:@p;
       color: @color_dark2;
+      .ell();
+    }
+    .ng-pop-select-input{
+      width: 100%;
+      height:40px;
+      line-height: 40px;
+      padding: @p;
+      font-size:14px;
+      background: transparent;
+      border:0;
+      outline: none;
+      font-family: @font_r;
+      color: @color_dark1 + 30%;
     }
     .ng-pop-select-icon {
       position: absolute;

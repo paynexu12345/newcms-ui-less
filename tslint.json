@@ -21,7 +21,7 @@
     ],
     "member-access": false,
     "member-ordering": [
-      true,
+      false,
       {
         "order": [
           "static-field",
@@ -45,7 +45,9 @@
       true,
       "ignore-params"
     ],
+    "no-trailing-whitespace":[false],
     "no-non-null-assertion": true,
+    "disable-next-line":[false],
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-use-before-declare": true,
@@ -56,12 +58,15 @@
     ],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
+    "variable-name":[true,"allow-pascal-case","allow-leading-underscore"],
+    "curly":[false],
+    "triple-equals":[false],
     "quotemark": [
-      true,
+      false,
       "single"
     ],
     "trailing-comma": false,
-    "no-output-on-prefix": true,
+    "no-output-on-prefix": false,
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,

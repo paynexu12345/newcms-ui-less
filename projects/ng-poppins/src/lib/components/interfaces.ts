@@ -1,5 +1,5 @@
 import { EventEmitter, ElementRef } from "@angular/core";
-export type PositionType = "downLeft" |"downRight" | "upLeft" |"upRight";
+export type PositionType = "downLeft" | "downRight" | "upLeft" | "upRight";
 export abstract class AbstractContainerComponent {
   childComps: any[];
   addChildComp: (child: any) => void;
@@ -20,7 +20,7 @@ export interface CustomizeClassNames {
 export interface Disabled {
   disabled?: boolean;
 }
-export interface activeIndex {
+export interface ActiveIndex {
   activeIndex: number | number[];
 }
 export class ContainerComponent<T> {
@@ -37,12 +37,12 @@ export class ContainerComponent<T> {
   removeChildComp: (child: T, ...args) => void;
 }
 
-export class AlignDirection{
+export class AlignDirection {
   isVisible = false;
   direction: PositionType = "downLeft";
   element: ElementRef;
   setPosition() {
-    let pos = this.element.nativeElement.getBoundingClientRect();
+    const pos = this.element.nativeElement.getBoundingClientRect();
     if (pos.left + this.element.nativeElement.offsetWidth > window.innerWidth) {
       if (
         pos.top + this.element.nativeElement.offsetHeight >
@@ -63,7 +63,7 @@ export class AlignDirection{
       }
     }
   }
-  setVisible(){
+  setVisible() {
     this.isVisible = true;
   }
 }

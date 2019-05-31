@@ -33,9 +33,9 @@ export function applyMixins(derivedCtor: any, baseCtors: any[]) {
     });
   });
 }
-export function filterActiveItem<T>(items:T[]):T{
-  let ret = items.filter(item=>{return (item as any).isActive})[0];
-  if(!ret) ret = items[0];
+export function filterActiveItem<T>(items: T[]): T {
+  let ret = items.filter(item => (item as any).isActive)[0];
+  if (!ret) { ret = items[0]; }
   return ret;
 }
 export function commonActivateOnInit(component) {
@@ -46,7 +46,14 @@ export function commonActivateOnInit(component) {
       component.config &&
       component.config.activeIndex >= 0 &&
       component.config.activeIndex < component.childComps.length - 1
-    )
+    ) {
       component.childComps[component.config.activeIndex].activate();
+    }
   }, 100);
+}
+export function commonRegisterComponent(component, attribute: string , regComponent) {
+  component[attribute] = regComponent;
+}
+export function commonCancelComponent(component, attribute) {
+  component[attribute] = null;
 }
