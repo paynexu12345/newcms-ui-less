@@ -9,8 +9,7 @@ import { ContainerComponent } from '../base';
 })
 export class NgPopHeaderNavComponent extends ContainerComponent<NgPopHeaderNavItemComponent>
   implements
-    OnInit
-     {
+  OnInit {
   childComps: any;
   constructor() {
     super();

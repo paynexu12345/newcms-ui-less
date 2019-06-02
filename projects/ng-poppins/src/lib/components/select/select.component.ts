@@ -1,18 +1,14 @@
+// TODOs:scroll when up down key
 import {
   Component,
   OnInit,
-  Output,
-  EventEmitter,
   HostListener,
   Input,
   OnDestroy
 } from "@angular/core";
 import {
-  applyMixins,
   commonInitCfg,
   filterActiveItem,
-  commonRegisterComponent,
-  commonCancelComponent
 } from "../comp-utils";
 import {
   DEFAULT_NGPOP_SELECT_CONFIG,

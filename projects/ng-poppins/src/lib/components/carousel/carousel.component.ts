@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { NgPopCarouselItemComponent } from "./carousel-item/carousel-item.component";
 import { CarouselConfig, DEFAULT_CAROUSEL_CONFIG } from "./class";
-import { commonInitCfg, applyMixins } from "../comp-utils";
+import { commonInitCfg } from "../comp-utils";
 import { ContainerComponent } from '../base';
 
 @Component({
@@ -12,7 +12,7 @@ import { ContainerComponent } from '../base';
 export class NgPopCarouselComponent extends ContainerComponent<NgPopCarouselItemComponent>
   implements OnInit {
   constructor() {
-    super()
+    super();
   }
   stageWidth = 0;
   stageHeight = 0;
