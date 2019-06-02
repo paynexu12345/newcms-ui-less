@@ -1,4 +1,4 @@
-<div [class]="rootCssClass" [class.active]="isActive" [class.disabled]="config.disabled" [style.width]="config.width">
+<div [class]="rootCssClass" [class.active]="isActive" [class.disabled]="config.isDisabled" [style.width]="config.width">
   <div class="ng-pop-select-default-container">
     <ng-pop-select-default
       *ngIf="activeItem && !isActive"

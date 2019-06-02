@@ -8,46 +8,50 @@ import {
   ViewChild,
   OnDestroy
 } from "@angular/core";
-import { ChildComponent, Activatable } from "../../interfaces";
 import { NgPopTabsetComponent } from "../tabset.component";
 import { applyMixins } from "../../comp-utils";
+import { ChildComponent } from '../../base';
 
 @Component({
   selector: "ng-pop-tab-item",
   templateUrl: "./tab-item.component.html",
   styleUrls: ["./tab-item.component.css"]
 })
-export class NgPopTabItemComponent
-  implements OnInit, OnDestroy, ChildComponent, Activatable {
+export class NgPopTabItemComponent extends ChildComponent
+  implements OnInit, OnDestroy {
   constructor(
     public containerComp: NgPopTabsetComponent,
     public elementRef: ElementRef
-  ) {}
+  ) {
+    super();
+  }
   @ViewChild("li") li: ElementRef;
-  isActive = false;
-  @Output() onActivate: EventEmitter<this> = new EventEmitter();
-  @Output() onDeactivate: EventEmitter<this> = new EventEmitter();
-  commonActivate: () => void;
-  commonDeactivate: () => void;
 
-  activate() {
-    this.commonActivate();
-    if (this.containerComp && this.containerComp.flagComp) {
-      this.containerComp.flagComp.moveTo(this.li.nativeElement.offsetLeft);
-      this.containerComp.flagComp.setWidth(this.li.nativeElement.offsetWidth);
+  set isActive(val) {
+    if(val) {
+      if (this.isDisabled) return ;
+      this.commonActivate();
+      if (this.containerComp && this.containerComp.flagComp) {
+        this.containerComp.flagComp.moveTo(this.li.nativeElement.offsetLeft);
+        this.containerComp.flagComp.setWidth(this.li.nativeElement.offsetWidth);
+      }
+    } else {
+      this.commonDeactivate();
     }
+    
+    
   }
 
   deactivate() {
-    this.commonDeactivate();
+    
   }
 
   @HostListener("click")
   onclick() {
     if (this.containerComp) {
       this.containerComp.childComps.forEach(comp => {
-        if (comp == this) comp.activate();
-        else comp.deactivate();
+        if (comp == this) comp.isActive = true;
+        else comp.isActive = false;
       });
     }
   }
@@ -64,4 +68,3 @@ export class NgPopTabItemComponent
     this.containerComp.removeChildComp(this);
   }
 }
-applyMixins(NgPopTabItemComponent, [Activatable]);

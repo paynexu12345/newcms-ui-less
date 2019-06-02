@@ -1,24 +1,25 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { NgPopCarouselItemComponent } from "./carousel-item/carousel-item.component";
 import { CarouselConfig, DEFAULT_CAROUSEL_CONFIG } from "./class";
-import { ContainerComponent, BaseConfigComponent } from "../interfaces";
 import { commonInitCfg, applyMixins } from "../comp-utils";
+import { ContainerComponent } from '../base';
 
 @Component({
   selector: "ng-pop-carousel",
   templateUrl: "./carousel.component.html",
   styleUrls: ["./carousel.component.css"]
 })
-export class NgPopCarouselComponent
-  implements OnInit, ContainerComponent<NgPopCarouselItemComponent>, BaseConfigComponent {
-  constructor() {}
-  stageWidth: number = 0;
+export class NgPopCarouselComponent extends ContainerComponent<NgPopCarouselItemComponent>
+  implements OnInit {
+  constructor() {
+    super()
+  }
+  stageWidth = 0;
   stageHeight = 0;
   translateX = 0;
   autoPlayIntervalId = null;
   childComps: NgPopCarouselItemComponent[] = [];
   rootCssClass = "ng-pop-carousel";
-  reservedCssClasses: string[] = [];
   config: CarouselConfig = DEFAULT_CAROUSEL_CONFIG;
   @Input("config")
   set _config(val) {
@@ -28,10 +29,10 @@ export class NgPopCarouselComponent
 
   commonAddChildComp: (comp: NgPopCarouselItemComponent) => void;
   commonRemoveChildComp: (comp: NgPopCarouselItemComponent) => void;
-  addChildComp(comp: NgPopCarouselItemComponent){
+  addChildComp(comp: NgPopCarouselItemComponent) {
     this.commonAddChildComp(comp);
   };
-  removeChildComp(comp: NgPopCarouselItemComponent){
+  removeChildComp(comp: NgPopCarouselItemComponent) {
     this.commonRemoveChildComp(comp);
   };
 
@@ -45,8 +46,8 @@ export class NgPopCarouselComponent
       this.translateX = -i * this.stageWidth;
     }
     this.childComps.forEach((c, j) => {
-      if (i == j) c.activate();
-      else c.deactivate();
+      if (i == j) c.isActive = true;
+      else c.isActive = false;
     });
   }
 
@@ -83,4 +84,3 @@ export class NgPopCarouselComponent
     this.init();
   }
 }
-applyMixins(NgPopCarouselComponent, [ContainerComponent]);

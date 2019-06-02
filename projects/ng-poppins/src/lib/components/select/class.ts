@@ -1,23 +1,24 @@
-import { CustomizeClassNames, Disabled } from '../interfaces';
+
+import { NgPopBaseConfig } from '../base';
 
 export class InternalNgPopSelectItem {
   id?: number;
   text: string | number;
   disabled?: boolean;
 }
-export class NgPopSelectItem implements Disabled {
+export class NgPopSelectItem{
   [propName: string]: any;
-  disabled?: boolean;
+  isDisabled?: boolean;
   isActive?: boolean;
 }
 
-export class NgPopSelectConfig implements CustomizeClassNames, Disabled {
+export class NgPopSelectConfig implements NgPopBaseConfig {
   width: string;
   items: NgPopSelectItem[];
   textKey: string;
   idKey: string;
   cssClasses?: string[];
-  disabled?: boolean;
+  isDisabled?: boolean;
 }
 
 export const DEFAULT_NGPOP_SELECT_CONFIG: NgPopSelectConfig = {
@@ -25,14 +26,58 @@ export const DEFAULT_NGPOP_SELECT_CONFIG: NgPopSelectConfig = {
   items: [
     {
       id: 1,
-      name: "Content Provider",
-      isActive: false,
-      disabled: true
+      name: "Content Provider Administractor",
+      isActive: true
     },
     {
       id: 2,
-      name: "Content Provider2",
-      isActive: true
+      name: "Content Provider Administractor2",
+      isDisabled: true
+    },
+    {
+      id: 2,
+      name: "Content Provider Employee",
+      isActive: false
+    },
+    {
+      id: 2,
+      name: "Content Provider Employee",
+      isActive: false
+    },
+    {
+      id: 2,
+      name: "Content Provider Employee",
+      isActive: false
+    },
+    {
+      id: 2,
+      name: "Content Provider Employee",
+      isActive: false
+    },
+    {
+      id: 2,
+      name: "Content Provider Employee",
+      isActive: false
+    },
+    {
+      id: 2,
+      name: "Content Provider Employee",
+      isActive: false
+    },
+    {
+      id: 2,
+      name: "Content Provider Employee",
+      isActive: false
+    },
+    {
+      id: 2,
+      name: "Content Provider Employee",
+      isActive: false
+    },
+    {
+      id: 2,
+      name: "Content Provider Employee",
+      isActive: false
     }
   ],
   textKey: "name",

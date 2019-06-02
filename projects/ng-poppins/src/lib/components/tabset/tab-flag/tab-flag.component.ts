@@ -1,14 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { ChildComponent } from "../../interfaces";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { NgPopTabsetComponent } from "../tabset.component";
+import { ChildComponent } from '../../base';
 
 @Component({
   selector: "ng-pop-tab-flag",
   templateUrl: "./tab-flag.component.html",
   styleUrls: ["./tab-flag.component.css"]
 })
-export class NgPopTabFlagComponent implements OnInit, ChildComponent {
-  constructor(public containerComp: NgPopTabsetComponent) {}
+export class NgPopTabFlagComponent extends ChildComponent implements OnInit, OnDestroy {
+  constructor(public containerComp: NgPopTabsetComponent) {
+    super();
+  }
   translateX = 0;
   width = 0;
   moveTo(x: number) {

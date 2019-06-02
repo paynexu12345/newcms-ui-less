@@ -1,7 +1,7 @@
-import { CustomizeClassNames } from '../interfaces';
+import { NgPopBaseConfig } from '../base';
 
 export class Menu {
-  id?:number;
+  id?: number;
   /**
    * The text show in sidebar
    */
@@ -26,13 +26,13 @@ export class Menu {
   nameForUrl?: string;
   icon?: string;
   children?: Menu[];
-  permissionRels?:string[];
+  permissionRels?: string[];
 }
-export class SideBarConfig implements CustomizeClassNames{
-  menus:Menu[];
-  cssClasses?:string[];
+export class SideBarConfig implements NgPopBaseConfig {
+  menus: Menu[];
+  cssClasses?: string[];
 }
-export const DEFAULT_SIDEBAR_CONFIG:SideBarConfig = {
-  menus:[],
-  cssClasses:[]
+export const DEFAULT_SIDEBAR_CONFIG: SideBarConfig = {
+  menus: [],
+  cssClasses: []
 }

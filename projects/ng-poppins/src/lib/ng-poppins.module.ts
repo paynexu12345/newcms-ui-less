@@ -27,6 +27,7 @@ import { NgPopSelectDropdownComponent } from './components/select/select-dropdow
 import { NgPopSelectDropdownItemComponent } from './components/select/select-dropdown-item/select-dropdown-item.component';
 import { NgPopSelectService } from './components/select/select.service';
 import { NgPopSelectInputComponent } from './components/select/select-input/select-input.component';
+import { NgPopPopupLayerComponent } from './components/popup-layer/popup-layer.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { NgPopSelectInputComponent } from './components/select/select-input/sele
     NgPopSelectDefaultComponent,
     NgPopSelectDropdownComponent,
     NgPopSelectDropdownItemComponent,
-    NgPopSelectInputComponent
+    NgPopSelectInputComponent,
+    NgPopPopupLayerComponent
   ],
   imports: [CommonModule, RouterModule, BrowserAnimationsModule, FormsModule],
   exports: [
@@ -69,7 +71,8 @@ import { NgPopSelectInputComponent } from './components/select/select-input/sele
     NgPopSelectDefaultComponent,
     NgPopSelectDropdownComponent,
     NgPopSelectDropdownItemComponent,
-    NgPopSelectInputComponent
+    NgPopSelectInputComponent,
+    NgPopPopupLayerComponent
   ],
   providers: [PageModeService, NgPopSelectService]
 })

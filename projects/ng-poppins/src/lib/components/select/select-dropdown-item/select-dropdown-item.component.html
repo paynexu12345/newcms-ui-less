@@ -1,7 +1,7 @@
 <div
   class="ng-pop-select-dropdown-item"
-  [class.active]="item.isActive"
-  [class.disabled]="item.disabled"
+  [class.active]="isActive"
+  [class.disabled]="isDisabled"
   *ngIf="!hide"
 >
   {{ item[containerComp.config.textKey] }}

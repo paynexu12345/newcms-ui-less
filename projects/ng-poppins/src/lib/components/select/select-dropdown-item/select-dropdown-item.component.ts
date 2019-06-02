@@ -1,26 +1,37 @@
-import { Component, OnInit, HostListener, Input, OnDestroy } from "@angular/core";
-import { ChildComponent } from "../../interfaces";
+import { Component, OnInit, HostListener, Input, OnDestroy, Output, EventEmitter } from "@angular/core";
 import { NgPopSelectComponent } from "../select.component";
 import { NgPopSelectItem } from "../class";
+import { ChildComponent } from '../../base';
 
 @Component({
   selector: "ng-pop-select-dropdown-item",
   templateUrl: "./select-dropdown-item.component.html",
   styleUrls: ["./select-dropdown-item.component.less"]
 })
-export class NgPopSelectDropdownItemComponent
+export class NgPopSelectDropdownItemComponent extends ChildComponent
   implements OnInit, OnDestroy, ChildComponent {
-  constructor(public containerComp: NgPopSelectComponent) { }
+  constructor(public containerComp: NgPopSelectComponent) { 
+    super();
+  }
   hide = false;
   sub1 = null;
-  @Input()
   item: NgPopSelectItem;
+  @Input("item")
+  set _item(val) {
+    if (val) {
+      this.isDisabled = val.isDisabled;
+      this.isActive = val.isActive;
+      this.item = val;
+    }
+  }
   @HostListener("click", ["$event"])
   onclick($event) {
     $event.stopPropagation();
-    if (!this.item.disabled) {
+    if (!this.isDisabled) {
+      this.item.isActive = true;
+      this.containerComp.activeItem.isActive = false;
       this.containerComp.activeItem = this.item;
-      this.containerComp.deactivate();
+      this.containerComp.isActive = false;
     }
   }
   ngOnInit() {

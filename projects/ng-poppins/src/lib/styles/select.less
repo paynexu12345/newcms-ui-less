@@ -3,13 +3,9 @@
 .placeholder({
   color:lighten(@color_dark2,-15%);
 });
-.white{
-  .placeholder({
-    color:lighten(@color_dark2,-45%);
-  });
-}
 .ng-pop-select {
   display: inline-block;
+  vertical-align: middle;
   position: relative;
   height: 40px;
   background: #27273d;
@@ -18,6 +14,7 @@
   border-radius: 3px;
   border: 1px solid transparent;
   cursor: default;
+  z-index: 10;
   &.white{
     background:#fff;
     border-color: @color_light1;
@@ -34,6 +31,7 @@
     }
     .ng-pop-select-dropdown{
       background: #fff;
+      border-color: @color_light1;
       .ng-pop-select-dropdown-item{
         &.disabled {
           color: lighten(@color_dark2,30%);
@@ -96,6 +94,7 @@
     min-width: 100%;
     background: #27273d;
     border-radius: 3px;
+    border:1px solid transparent;
     .ng-pop-select-dropdown-item {
       height: 40px;
       line-height: 40px;

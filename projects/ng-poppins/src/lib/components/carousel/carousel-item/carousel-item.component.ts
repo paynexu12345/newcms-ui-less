@@ -1,26 +1,16 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from "@angular/core";
 import { NgPopCarouselComponent } from "../carousel.component";
-import { ChildComponent, Activatable } from "../../interfaces";
 import { applyMixins } from '../../comp-utils';
+import { ChildComponent } from '../../base';
 
 @Component({
   selector: "ng-pop-carousel-item",
   templateUrl: "./carousel-item.component.html",
   styleUrls: ["./carousel-item.component.css"]
 })
-export class NgPopCarouselItemComponent implements OnInit, ChildComponent,Activatable {
-  constructor(public containerComp: NgPopCarouselComponent) {}
-  isActive = false;
-  @Output() onActivate: EventEmitter<this> = new EventEmitter();
-  @Output() onDeactivate: EventEmitter<this> = new EventEmitter();
-  commonActivate: () => void;
-  commonDeactivate: () => void;
-  activate() {
-    this.commonActivate();
-  }
-
-  deactivate() {
-    this.commonDeactivate();
+export class NgPopCarouselItemComponent extends ChildComponent implements OnInit, OnDestroy{
+  constructor(public containerComp: NgPopCarouselComponent) {
+    super();
   }
   ngOnInit() {
     this.containerComp.addChildComp(this);
@@ -29,4 +19,3 @@ export class NgPopCarouselItemComponent implements OnInit, ChildComponent,Activa
     this.containerComp.removeChildComp(this);
   }
 }
-applyMixins(NgPopCarouselItemComponent, [Activatable]);

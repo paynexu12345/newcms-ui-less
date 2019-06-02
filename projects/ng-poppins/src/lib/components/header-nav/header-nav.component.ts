@@ -1,29 +1,27 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { applyMixins, commonActivateOnInit, commonInitCfg } from "../comp-utils";
-import { BaseConfigComponent, ContainerComponent } from "../interfaces";
+import { commonActivateOnInit, commonInitCfg } from "../comp-utils";
 import { DEFAULT_HEADER_NAV_CONFIG } from "./class";
 import { NgPopHeaderNavItemComponent } from "./header-nav-item/header-nav-item.component";
+import { ContainerComponent } from '../base';
 @Component({
   selector: "ng-pop-header-nav",
   templateUrl: "header-nav.component.html"
 })
-export class NgPopHeaderNavComponent
+export class NgPopHeaderNavComponent extends ContainerComponent<NgPopHeaderNavItemComponent>
   implements
-    OnInit,
-    BaseConfigComponent,
-    ContainerComponent<NgPopHeaderNavItemComponent> {
-  constructor() {}
+    OnInit
+     {
+  childComps: any;
+  constructor() {
+    super();
+  }
   items: NgPopHeaderNavItemComponent[] = [];
   config = DEFAULT_HEADER_NAV_CONFIG;
   rootCssClass = "ng-pop-header-nav";
-  reservedCssClasses: string[] = [];
-  childComps: NgPopHeaderNavItemComponent[] = [];
   @Input("config")
   set _config(val) {
     commonInitCfg(this, val);
   }
-  commonAddChildComp: (comp: NgPopHeaderNavItemComponent) => void;
-  commonRemoveChildComp: (comp: NgPopHeaderNavItemComponent) => void;
   addChildComp(comp: NgPopHeaderNavItemComponent) {
     this.commonAddChildComp(comp);
     this.childComps.forEach((_comp, i) => {
@@ -37,4 +35,3 @@ export class NgPopHeaderNavComponent
     commonActivateOnInit(this);
   }
 }
-applyMixins(NgPopHeaderNavComponent, [ContainerComponent]);

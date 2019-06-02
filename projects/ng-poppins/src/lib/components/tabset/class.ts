@@ -1,10 +1,8 @@
-import { CustomizeClassNames } from '../interfaces';
+import { NgPopBaseConfig } from '../base';
 
-export class TabConfig implements CustomizeClassNames {
-  activeIndex?: number;
+export class TabConfig implements NgPopBaseConfig{
   cssClasses?: string[];
 }
 export const DEFAULT_TAB_CONFIG: TabConfig = {
-  activeIndex: 1,
   cssClasses: []
 };

@@ -46,6 +46,7 @@ export class ContentHomeComponent implements OnInit {
     }
   };
   selectConfig: NgPopSelectConfig = DEFAULT_NGPOP_SELECT_CONFIG;
+  // selectConfig2: NgPopSelectConfig = Object.assign({},DEFAULT_NGPOP_SELECT_CONFIG,{cssClasses:["white"]}) ;
   selectConfig2: NgPopSelectConfig = {
     width: "160px",
     items: [

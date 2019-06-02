@@ -1,4 +1,8 @@
 export const CSS_CLASS_NAME_PREFIX = "ng-pop-";
+export const KEY_UP = 38;
+export const KEY_DOWN = 40;
+export const KEY_ENTER = 13;
+export const KEY_ESC = 27;
 export function commonInitCfg(component, cfg) {
   if (cfg) {
     component.config = Object.assign({}, component.config || {}, cfg);

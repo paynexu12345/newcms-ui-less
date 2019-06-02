@@ -1,32 +1,18 @@
 import { Injectable } from "@angular/core";
 import { NgPopSelectComponent } from "./select.component";
-import { ContainerComponent } from "../interfaces";
-import { applyMixins } from '../comp-utils';
+import { ContainerService } from '../base';
 
 @Injectable()
 export class NgPopSelectService
-  implements ContainerComponent<NgPopSelectComponent> {
-  constructor() {}
-  childComps: NgPopSelectComponent[] = [];
-
-  commonAddChildComp: (comp: NgPopSelectComponent) => {};
-
-  commonRemoveChildComp: (comp: NgPopSelectComponent) => {};
-
-  addChildComp(comp: NgPopSelectComponent) {
-    this.commonAddChildComp(comp);
+  extends ContainerService<NgPopSelectComponent> {
+  constructor() {
+    super();
   }
-
-  removeChildComp(comp: NgPopSelectComponent) {
-    this.commonRemoveChildComp(comp);
-  }
-
-  deactivateAllExcept(comp: NgPopSelectComponent){
-    this.childComps.forEach(child=>{
-      if(comp != child){
-        child.deactivate();
+  deactivateAllExcept(comp: NgPopSelectComponent) {
+    this.childComps.forEach(child => {
+      if (comp != child) {
+        child.isActive = false;
       }
     })
   }
 }
-applyMixins(NgPopSelectService, [ ContainerComponent]);
