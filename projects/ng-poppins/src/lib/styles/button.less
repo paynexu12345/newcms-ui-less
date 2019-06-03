@@ -40,6 +40,10 @@
     background: @color_light2;
     color: @color_main;
   }
+  &.danger{
+    background: @color_light2;
+    color: @color_danger;
+  }
   &@{selector-sm} {
     padding: @pud*2 / 3 @plr*2 / 3;
     font-size: @fz - 2;
@@ -52,6 +56,7 @@
   }
   &.disabled,
   &[disabled] {
+    color: @color_disabled;
     cursor: not-allowed;
     filter: alpha(opacity=65);
     opacity: 0.65;

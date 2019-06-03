@@ -6,8 +6,15 @@
   vertical-align: middle;
   height: 32px;
   line-height: 32px;
-  padding: 0 32px 0 10px;
+  padding: 0 32px 0 0;
   background: @color_light2;
+  .btn {
+    border-radius: 0;
+  }
+  .btn:not(.disabled):hover{
+    background: darken(@c1,5%);
+    opacity: 1;
+  }
   .ng-pop-btn-group-default{}
   .ng-pop-btn-group-arrow{
     position: absolute;
@@ -36,9 +43,7 @@
     position: absolute;
     
     .ng-pop-btn-group-dropdown-item{
-      .btn:hover{
-        background: darken(@c1,5%);
-      }
+      
     }
     &.down-left {
       top: 32px;

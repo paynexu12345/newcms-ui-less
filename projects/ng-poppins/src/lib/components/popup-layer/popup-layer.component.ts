@@ -27,8 +27,6 @@ export class NgPopPopupLayerComponent extends BaseComponent implements OnInit{
     } else {
       this.maxHeight = pos.top - HEADER_HEIGHT - 40 + "px";
     }
-    
-    
   }
   setPosition() {
     const pos = this.element.nativeElement.getBoundingClientRect();
@@ -73,6 +71,7 @@ export class NgPopPopupLayerComponent extends BaseComponent implements OnInit{
     this.setMaxHeight();
   }
   ngOnInit() {
+    
     setTimeout(() => {
       this.setPosition();
       this.setMaxHeight();
