@@ -2,7 +2,7 @@
 [class.up-left]="direction == 'upLeft'" [class.up-right]="direction == 'upRight'"
 [style.visibility]="isVisible ? 'visible' : 'hidden'" [style.min-width]="containerComp.config.width">
   <div  style="overflow:auto;" [style.max-height]="maxHeight" #scrollElement>
-    <ng-pop-select-dropdown-item [item]="item" *ngFor="let item of containerComp.config.items">
+    <ng-pop-select-dropdown-item [item]="item" *ngFor="let item of containerComp.items">
     </ng-pop-select-dropdown-item>
   </div>
 </div>

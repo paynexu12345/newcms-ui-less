@@ -9,6 +9,7 @@ import { ContentHomeComponent } from './content-home/content-home.component';
 import { Layout1Component } from './layout/layout1/layout1.component';
 import { Layout2Component } from './layout/layout2/layout2.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     CommonModule,
     HttpModule,
-    NgPoppinsModule
+    NgPoppinsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

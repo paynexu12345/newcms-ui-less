@@ -18,7 +18,7 @@ import { NgPopBreadcrumbComponent } from "./components/breadcrumb";
 import { NgPopCarouselComponent } from "./components/carousel/carousel.component";
 import { NgPopCarouselItemComponent } from "./components/carousel/carousel-item/carousel-item.component";
 import { NgPopTabsetComponent } from "./components/tabset/tabset.component";
-import { NgPopTabItemComponent } from "./components/tabset/tab-item/tab-item.component";
+import { NgPopTabNavItemComponent } from "./components/tabset/tab-nav-item/tab-nav-item.component";
 import { NgPopTabFlagComponent } from "./components/tabset/tab-flag/tab-flag.component";
 import { NgPopSelectComponent } from './components/select/select.component';
 import { NgPopSelectIconComponent } from './components/select/select-icon/select-icon.component';
@@ -28,6 +28,15 @@ import { NgPopSelectDropdownItemComponent } from './components/select/select-dro
 import { NgPopSelectService } from './components/select/select.service';
 import { NgPopSelectInputComponent } from './components/select/select-input/select-input.component';
 import { NgPopPopupLayerComponent } from './components/popup-layer/popup-layer.component';
+import { NgPopTabContentItemComponent } from './components/tabset/tab-content-item/tab-content-item.component';
+import { TableSuiteComponent } from './components/table-suite/table-suite.component';
+import { TableComponent } from './components/table-suite/table/table.component';
+import { PageComponent } from './components/table-suite/page/page.component';
+import { NgPopBtnGroupComponent } from './components/btn-group/btn-group.component';
+import { NgPopBtnGroupDefaultItemComponent } from './components/btn-group/btn-group-default-item/btn-group-default-item.component';
+import { NgPopBtnGroupDropdownComponent } from './components/btn-group/btn-group-dropdown/btn-group-dropdown.component';
+import { NgPopBtnGroupDropdownItemComponent } from './components/btn-group/btn-group-dropdown-item/btn-group-dropdown-item.component';
+import { NgPopBtnGroupArrowComponent } from './components/btn-group/btn-group-arrow/btn-group-arrow.component';
 
 @NgModule({
   declarations: [
@@ -41,15 +50,24 @@ import { NgPopPopupLayerComponent } from './components/popup-layer/popup-layer.c
     NgPopCarouselComponent,
     NgPopCarouselItemComponent,
     NgPopTabsetComponent,
-    NgPopTabItemComponent,
+    NgPopTabNavItemComponent,
     NgPopTabFlagComponent,
+    NgPopTabContentItemComponent,
     NgPopSelectComponent,
     NgPopSelectIconComponent,
     NgPopSelectDefaultComponent,
     NgPopSelectDropdownComponent,
     NgPopSelectDropdownItemComponent,
     NgPopSelectInputComponent,
-    NgPopPopupLayerComponent
+    NgPopPopupLayerComponent,
+    TableSuiteComponent,
+    TableComponent,
+    PageComponent,
+    NgPopBtnGroupComponent,
+    NgPopBtnGroupDefaultItemComponent,
+    NgPopBtnGroupDropdownComponent,
+    NgPopBtnGroupDropdownItemComponent,
+    NgPopBtnGroupArrowComponent
   ],
   imports: [CommonModule, RouterModule, BrowserAnimationsModule, FormsModule],
   exports: [
@@ -63,8 +81,9 @@ import { NgPopPopupLayerComponent } from './components/popup-layer/popup-layer.c
     NgPopCarouselComponent,
     NgPopCarouselItemComponent,
     NgPopTabsetComponent,
-    NgPopTabItemComponent,
+    NgPopTabNavItemComponent,
     NgPopTabFlagComponent,
+    NgPopTabContentItemComponent,
     NgPopSelectComponent,
     NgPopSelectComponent,
     NgPopSelectIconComponent,
@@ -72,7 +91,15 @@ import { NgPopPopupLayerComponent } from './components/popup-layer/popup-layer.c
     NgPopSelectDropdownComponent,
     NgPopSelectDropdownItemComponent,
     NgPopSelectInputComponent,
-    NgPopPopupLayerComponent
+    NgPopPopupLayerComponent,
+    TableSuiteComponent,
+    TableComponent,
+    PageComponent,
+    NgPopBtnGroupComponent,
+    NgPopBtnGroupDefaultItemComponent,
+    NgPopBtnGroupDropdownComponent,
+    NgPopBtnGroupDropdownItemComponent,
+    NgPopBtnGroupArrowComponent
   ],
   providers: [PageModeService, NgPopSelectService]
 })

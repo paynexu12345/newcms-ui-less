@@ -1,9 +1,11 @@
 @import "base.less";
 @h : 60px;
 .@{classname_prefix}tab {
-  height: @h;
-  border-bottom: 1px solid #e5e9f5;
-  position: relative;
+  .@{classname_prefix}tab-header{
+    height: @h;
+    border-bottom: 1px solid #e5e9f5;
+    position: relative;
+  }
   .@{classname_prefix}tab-nav {
     height: @h;
     .@{classname_prefix}tab-nav-item {
@@ -17,10 +19,14 @@
       cursor: pointer;
       font-family: @font_m;
       transition:color @anim_timing_func;
-      &:not(.active):hover {
+      &.disabled {
+        color: @color_disabled;
+        cursor: not-allowed;
+      }
+      &:not(.disabled):not(.active):hover {
         color: lighten(@color_main,10%);
       }
-      &.active {
+      &:not(.disabled).active {
         color: @color_main;
       }
     }
@@ -32,6 +38,12 @@
     left: 0;
     background: @color_main;
     transition:width @anim_timing_func,transform @anim_timing_func;
+  }
+  .@{classname_prefix}tab-content-item{
+    padding: 25px;
+    &.active{
+      display: block;
+    }
   }
   
 }

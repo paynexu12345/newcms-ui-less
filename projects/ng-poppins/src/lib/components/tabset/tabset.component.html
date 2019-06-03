@@ -1,6 +1,11 @@
 <div [class]="rootCssClass">
-  <ul class="ng-pop-tab-nav">
-    <ng-content></ng-content>
-  </ul>
-  <ng-pop-tab-flag></ng-pop-tab-flag>
+  <div class="ng-pop-tab-header">
+    <ul class="ng-pop-tab-nav">
+      <ng-pop-tab-nav-item *ngFor="let item of config.items" [item]="item"></ng-pop-tab-nav-item>
+    </ul>
+    <ng-pop-tab-flag></ng-pop-tab-flag>
+  </div>
+  <div class="ng-pop-tab-content">
+      <ng-content></ng-content>
+  </div>
 </div>

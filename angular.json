@@ -173,7 +173,8 @@
               "projects/ng-poppins/src/lib/styles/sidebar.less",
               "projects/ng-poppins/src/lib/styles/tab.less",
               "projects/ng-poppins/src/lib/styles/table.less",
-              "projects/ng-poppins/src/lib/styles/select.less"
+              "projects/ng-poppins/src/lib/styles/select.less",
+              "projects/ng-poppins/src/lib/styles/btn-group.less"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js"

@@ -6,7 +6,9 @@ export function geneNavConfig(activeItemId): HeaderNavConfig {
   let cfg = DEFAULT_HEADER_NAV_CONFIG;
   navItems.map((navItem,i) => {
     if (navItem.id == activeItemId) 
-    cfg.activeIndex = i;
+    navItem.isActive = true;
+    else 
+    navItem.isActive = false;
   });
   cfg.items = navItems;
   return cfg;

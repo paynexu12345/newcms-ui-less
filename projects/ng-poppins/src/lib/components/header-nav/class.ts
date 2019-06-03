@@ -1,24 +1,29 @@
-import { NgPopBaseConfig } from '../base';
+import { NgPopBaseConfig } from "../base";
 
 export class HeaderNavItem {
   id: number;
   url: string;
   referTo: string;
+  text:string;
+  isActive?: boolean;
 }
+
 export class HeaderNavConfig implements NgPopBaseConfig {
   items: HeaderNavItem[];
-  activeIndex: number;
   cssClasses?: string[];
+  eject:boolean;
 }
 
 export const DEFAULT_HEADER_NAV_ITEM = {
   id: 0,
   url: "",
-  referTo: ""
-}
+  referTo: "",
+  text:"",
+  isActive: false
+};
 
 export const DEFAULT_HEADER_NAV_CONFIG: HeaderNavConfig = {
   items: [],
-  activeIndex: 0,
-  cssClasses: []
-}
+  cssClasses: [],
+  eject:true
+};

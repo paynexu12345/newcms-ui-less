@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { NgPopSelectConfig, DEFAULT_NGPOP_SELECT_CONFIG } from 'projects/ng-poppins/src/public-api';
+import { NgPopSelectConfig, DEFAULT_SELECT_CONFIG } from 'projects/ng-poppins/src/public-api';
 
 @Component({
   selector: "cms-header",
@@ -18,7 +18,8 @@ export class HeaderComponent {
     // public baseService: BaseService,
     // public authService: AuthService
   ) {}
-  selectConfig:NgPopSelectConfig = DEFAULT_NGPOP_SELECT_CONFIG;
+  selectConfig:NgPopSelectConfig = DEFAULT_SELECT_CONFIG;
+  partnerId = 3;
   toggleMessage = "Toggle navigation";
   partners: any[] = [];
 

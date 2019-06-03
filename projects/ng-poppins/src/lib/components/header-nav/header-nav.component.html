@@ -1,3 +1,9 @@
 <div [class]="rootCssClass">
-  <ng-content></ng-content>
+  <ng-container *ngIf="config.eject">
+    <ng-content></ng-content>
+  </ng-container>
+  <ng-container *ngIf="!config.eject">
+      <ng-pop-header-nav-item *ngFor="let item of config.items" [item]="item"
+      >{{item.text}}</ng-pop-header-nav-item>
+  </ng-container>
 </div>

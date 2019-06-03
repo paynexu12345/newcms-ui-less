@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Layout1Config } from '../layout/layout.class';
 import { geneNavConfig } from '../header/generateActiveNavItem';
 import { NAVITEM_ID_CONTENT } from 'src/app-config';
-import { PageModeService, NgPopSelectConfig, DEFAULT_NGPOP_SELECT_CONFIG } from 'projects/ng-poppins/src/public-api';
+import { PageModeService, NgPopSelectConfig, DEFAULT_SELECT_CONFIG } from 'projects/ng-poppins/src/public-api';
 import { BreadcrumbConfig } from 'projects/ng-poppins/src/lib/components/breadcrumb';
 import { MENUS_CONTENT } from '../../content-config';
+import { NgPopTabConfig, DEFAULT_TAB_CONFIG } from 'projects/ng-poppins/src/lib/components/tabset';
 // import { CmsLayout1Config } from 'project-shared/layout/layout.class';
 // import { generateActiveNavItem } from 'project-shared/components/cms-header/cms-header-nav/generateActiveNavItem';
 // import { ID_CONTENT, FROM_INDEX } from 'project-shared/constant';
@@ -45,8 +46,8 @@ export class ContentHomeComponent implements OnInit {
       cssClasses: ["c1"]
     }
   };
-  selectConfig: NgPopSelectConfig = DEFAULT_NGPOP_SELECT_CONFIG;
-  // selectConfig2: NgPopSelectConfig = Object.assign({},DEFAULT_NGPOP_SELECT_CONFIG,{cssClasses:["white"]}) ;
+  selectConfig: NgPopSelectConfig = DEFAULT_SELECT_CONFIG;
+  // selectConfig2: NgPopSelectConfig = Object.assign({},DEFAULT_SELECT_CONFIG,{cssClasses:["white"]}) ;
   selectConfig2: NgPopSelectConfig = {
     width: "160px",
     items: [
@@ -67,6 +68,10 @@ export class ContentHomeComponent implements OnInit {
     cssClasses: ["white"]
     // disabled:true
   };
+  tabConfig1:NgPopTabConfig = Object.assign({},DEFAULT_TAB_CONFIG,{eject:true});
+  onTabItemActivate(){
+     alert(1);
+  }
   ngOnInit() {
   }
 

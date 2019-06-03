@@ -1,12 +1,12 @@
-import { EventEmitter, Output, Input, ElementRef, ViewChild, HostListener } from '@angular/core';
+import { EventEmitter, Output, Input, ElementRef, ViewChild } from '@angular/core';
 import { commonInitCfg, KEY_ESC, KEY_UP, KEY_DOWN, KEY_ENTER } from './comp-utils';
 declare var $;
 export type PositionType = "downLeft" | "downRight" | "upLeft" | "upRight";
 export const HEADER_HEIGHT = 80;
 export abstract class Container<T> {
-  childComps: T[];
-  commonAddChildComp: (child: T) => void;
-  commonRemoveChildComp: (child: T) => void;
+  mainSubComps: T[];
+  commonAddMainSubComp: (child: T) => void;
+  commonRemoveMainSubComp: (child: T) => void;
 }
 export interface Configurable {
   readonly reservedCssClasses: string[];
@@ -14,15 +14,18 @@ export interface Configurable {
   config: { [propName: string]: any };
   _config: { [propName: string]: any };
 }
+/**
+ * BaseComponent is as its name ,delivery active/disable status and onactivate handler, if no special usage , all ng-pop components should extends BaseComponent or its derived  classes.
+ */
 export class BaseComponent {
-  private _isDisabled = false;
+  protected _isDisabled = false;
   public get isDisabled() {
     return this._isDisabled;
   }
   public set isDisabled(value) {
     this._isDisabled = value;
   }
-  private _isActive = false;
+  protected _isActive = false;
   public get isActive() {
     return this._isActive;
   }
@@ -34,12 +37,12 @@ export class BaseComponent {
     }
 
   }
-  @Output() onActivate = new EventEmitter();
-  @Output() onDeactivate = new EventEmitter();
+  @Output() activate = new EventEmitter();
+  @Output() deactivate = new EventEmitter();
   protected commonActivate() {
     if (this._isDisabled) return;
     if (!this._isActive) {
-      this.onActivate.emit(this);
+      this.activate.emit(this);
     }
     this._isActive = true;
   }
@@ -47,7 +50,7 @@ export class BaseComponent {
   protected commonDeactivate() {
     if (this._isDisabled) return;
     if (this._isActive) {
-      this.onDeactivate.emit(this);
+      this.deactivate.emit(this);
     }
     this._isActive = false;
   }
@@ -75,60 +78,87 @@ export class BaseComponent {
   }
 }
 export class BaseService { }
+/**
+ * ContainerService is used to manage several components register.See NgPopSelectComponent for example.
+ */
 export class ContainerService<T> extends BaseService implements Container<T> {
   constructor() {
     super();
   }
-  childComps: T[] = [];
-  commonAddChildComp(child: T) {
-    this.childComps.push(child);
+  mainSubComps: T[] = [];
+  commonAddMainSubComp(child: T) {
+    this.mainSubComps.push(child);
   }
-  commonRemoveChildComp(child: T) {
-    this.childComps.forEach((comp, index) => {
-      if (child == comp) this.childComps.splice(index, 1);
+  commonRemoveMainSubComp(child: T) {
+    this.mainSubComps.forEach((comp, index) => {
+      if (child == comp) this.mainSubComps.splice(index, 1);
     });
   }
-  addChildComp(child: T, ...args) {
-    this.commonAddChildComp(child);
+  addMainSubComp(child: T, ...args) {
+    this.commonAddMainSubComp(child);
   }
-  removeChildComp(child: T, ...args) {
-    this.commonRemoveChildComp(child);
+  removeMainSubComp(child: T, ...args) {
+    this.commonRemoveMainSubComp(child);
   }
 }
+/**
+ * ContainerComponent is always the root component of a UI plugin( but sometimes would be insert into other plugins ), and its sub components should register themself in this component.After that , ContainerComponent would become the bridge of communication between its sub components. And the ContainerComponent keeps a special component arrays to refer to its main sub component.
+ * @example
+ * `header-nav
+ *    header-nav-item
+ *    header-nav-item
+ *    other-component..
+ * the header-nav is the ContainerComponent ,header-nav-item is the main sub component.`
+ */
 export class ContainerComponent<T> extends BaseComponent implements Configurable, Container<T> {
   constructor() {
     super();
   }
   reservedCssClasses = ["disabled", "active"];
   rootCssClass = "";
+  mainSubComps: T[] = [];
   config: { [propName: string]: any };
   @Input("config")
   set _config(val) {
     commonInitCfg(this, val);
   }
-  childComps: T[] = [];
-  commonAddChildComp(child: T) {
-    this.childComps.push(child);
+  
+  commonAddMainSubComp(child: T) {
+    this.mainSubComps.push(child);
   }
-  commonRemoveChildComp(child: T) {
-    this.childComps.forEach((comp, index) => {
-      if (child == comp) this.childComps.splice(index, 1);
+  commonRemoveMainSubComp(child: T) {
+    this.mainSubComps.forEach((comp, index) => {
+      if (child == comp) this.mainSubComps.splice(index, 1);
     });
   }
-  addChildComp(child: T, ...args) {
-    this.commonAddChildComp(child);
+  addMainSubComp(child: T, ...args) {
+    this.commonAddMainSubComp(child);
   };
-  removeChildComp(child: T, ...args) {
-    this.commonRemoveChildComp(child);
+  removeMainSubComp(child: T, ...args) {
+    this.commonRemoveMainSubComp(child);
   };
 }
-export class ChildComponent extends BaseComponent {
+/**
+ * The sub component of a ContainerComponent.
+ */
+export class SubComponent extends BaseComponent {
   constructor() {
     super();
   }
   containerComp: { [propName: string]: any };
 }
-export class InputComponent extends BaseComponent{
+/**
+ * The main sub component of a ContainerComponent.
+ */
+export class MainSubComponent<T> extends SubComponent{
+  constructor() {
+    super();
+  }
+  containerComp: { [propName: string]: any };
+  protected _item:T;
+  item:T;
+}
+export class SearchInputComponent extends BaseComponent{
   placeholder = "";
   searchText = "";
   searchFlag = null;
@@ -139,48 +169,6 @@ export class InputComponent extends BaseComponent{
   @Output() onPressEscKey = new EventEmitter();
   @ViewChild("elementRef") elementRef: ElementRef;
   onkeydown($event) {
-    // if ($event.keyCode == KEY_UP) {
-    //   for (let i = 0, len = this.containerComp.childComps.length; i < len; i++) {
-    //     if (this.containerComp.childComps[i].isActive) {
-    //       const prev = this.findPrevNotDisabled(this.containerComp.childComps, i);
-    //       if (prev) {
-    //         prev.isActive = true;
-    //         this.containerComp.childComps[i].isActive = false;
-    //       }
-    //       break;
-    //     }
-    //   }
-    //   this.onPressUpKey.emit();
-    // }
-    // if ($event.keyCode == KEY_DOWN) {
-    //   for (let i = 0, len = this.containerComp.childComps.length; i < len; i++) {
-    //     if (this.containerComp.childComps[i].isActive) {
-    //       const next = this.findNextNotDisabled(this.containerComp.childComps, i);
-    //       if (next) {
-    //         next.isActive = true;
-    //         this.containerComp.childComps[i].isActive = false;
-    //       }
-    //       break;
-    //     }
-    //   }
-    //   this.onPressDownKey.emit();
-    // }
-    // if ($event.keyCode == KEY_ENTER) {
-    //   this.containerComp.childComps.forEach(child => {
-    //     if (child.isActive) {
-    //       this.containerComp.activeItem = child.item;
-    //       child.item.isActive = true;
-    //     } else {
-    //       child.item.isActive = false;
-    //     }
-    //   });
-    //   this.containerComp.isActive = false;
-    //   this.onPressEnterKey.emit();
-    // }
-    // if ($event.keyCode == KEY_ESC) {
-    //   this.containerComp.isActive = false;
-    //   this.onPressEscKey.emit();
-    // }
     this.commonFilterKeydown($event);
   }
   protected commonFilterKeydown($event){

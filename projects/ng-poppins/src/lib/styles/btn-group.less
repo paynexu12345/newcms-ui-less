@@ -1,0 +1,60 @@
+@import "base.less";
+@c1:#E9EBF9;
+.ng-pop-btn-group{
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 32px 0 10px;
+  background: @color_light2;
+  .ng-pop-btn-group-default{}
+  .ng-pop-btn-group-arrow{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    color: @color_main;
+    background: @c1;
+    cursor: pointer;
+    transition:background @anim_timing_func;
+    .iconfont{
+      font-size: 12px;
+      font-weight: bold;
+    }
+    &:hover{
+      background: darken(@c1,5%);
+    }
+    // &:active{
+    //   background: @c1;
+    // }
+  }
+  .ng-pop-btn-group-dropdown{
+    position: absolute;
+    
+    .ng-pop-btn-group-dropdown-item{
+      .btn:hover{
+        background: darken(@c1,5%);
+      }
+    }
+    &.down-left {
+      top: 32px;
+      left: 0;
+    }
+    &.down-right {
+      top: 32px;
+      right: 0;
+    }
+    &.up-left {
+      bottom: 32px;
+      left: 0;
+    }
+    &.up-right {
+      bottom: 32px;
+      right: 0;
+    }
+  }
+}

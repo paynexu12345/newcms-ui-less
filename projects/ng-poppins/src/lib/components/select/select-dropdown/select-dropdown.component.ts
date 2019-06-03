@@ -5,7 +5,7 @@ import {
 } from "@angular/core";
 import { NgPopSelectComponent } from "../select.component";
 import { fadeInDownFactory } from '../../../animations';
-import { ChildComponent } from '../../base';
+import { SubComponent } from '../../base';
 import { NgPopPopupLayerComponent } from '../../popup-layer/popup-layer.component';
 const fadeInDown = fadeInDownFactory();
 declare var $;

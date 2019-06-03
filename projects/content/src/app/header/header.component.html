@@ -1,13 +1,13 @@
 <header class="ng-pop-page-header">
   <ng-pop-logo></ng-pop-logo>
   <ng-pop-header-nav [config]="config?.nav">
-    <ng-pop-header-nav-item
+    <ng-pop-header-nav-item [item]="config?.nav?.items[0]"
     >Home</ng-pop-header-nav-item>
-    <ng-pop-header-nav-item
+    <ng-pop-header-nav-item [item]="config?.nav?.items[1]"
     >Content</ng-pop-header-nav-item>
   </ng-pop-header-nav>
   <div class="ng-pop-right-container">
-        <ng-pop-select [config]="selectConfig"></ng-pop-select>
+        <ng-pop-select [config]="selectConfig" [(ngModel)]="partnerId"></ng-pop-select>
   </div>
   <!-- <a href="javascript:;" class="iconfont icon-menu" (click)="pageModeService?.pageModeSwitch()" [class.show]="globalService.currentModule.menus?.length!=0">
             <span class="sr-only">{{toggleMessage}}</span>

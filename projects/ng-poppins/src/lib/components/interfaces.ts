@@ -4,11 +4,11 @@
 // export type PositionType = "downLeft" | "downRight" | "upLeft" | "upRight";
 
 // export abstract class AbstractContainerComponent {
-//   childComps: any[];
-//   addChildComp: (child: any) => void;
-//   removeChildComp: (child: any) => void;
+//   mainSubComps: any[];
+//   addMainSubComp: (child: any) => void;
+//   removeMainSubComp: (child: any) => void;
 // }
-// export abstract class ChildComponent {
+// export abstract class SubComponent {
 //   containerComp: { [propName: string]: any };
 // }
 // export abstract class BaseConfigComponent {
@@ -27,17 +27,17 @@
 //   activeIndex: number | number[];
 // }
 // export class ContainerComponent<T> {
-//   childComps: T[];
-//   commonAddChildComp(child: T) {
-//     this.childComps.push(child);
+//   mainSubComps: T[];
+//   commonAddMainSubComp(child: T) {
+//     this.mainSubComps.push(child);
 //   }
-//   commonRemoveChildComp(child: T) {
-//     this.childComps.forEach((comp, index) => {
-//       if (child == comp) this.childComps.splice(index, 1);
+//   commonRemoveMainSubComp(child: T) {
+//     this.mainSubComps.forEach((comp, index) => {
+//       if (child == comp) this.mainSubComps.splice(index, 1);
 //     });
 //   }
-//   addChildComp: (child: T, ...args) => void;
-//   removeChildComp: (child: T, ...args) => void;
+//   addMainSubComp: (child: T, ...args) => void;
+//   removeMainSubComp: (child: T, ...args) => void;
 // }
 
 // export class AlignDirection {

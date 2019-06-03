@@ -21,7 +21,7 @@ export class NgPopSelectConfig implements NgPopBaseConfig {
   isDisabled?: boolean;
 }
 
-export const DEFAULT_NGPOP_SELECT_CONFIG: NgPopSelectConfig = {
+export const DEFAULT_SELECT_CONFIG: NgPopSelectConfig = {
   width: "160px",
   items: [
     {
@@ -35,52 +35,52 @@ export const DEFAULT_NGPOP_SELECT_CONFIG: NgPopSelectConfig = {
       isDisabled: true
     },
     {
-      id: 2,
+      id: 3,
       name: "Content Provider Employee",
       isActive: false
     },
     {
-      id: 2,
+      id: 4,
       name: "Content Provider Employee",
       isActive: false
     },
     {
-      id: 2,
+      id: 5,
       name: "Content Provider Employee",
       isActive: false
     },
     {
-      id: 2,
+      id: 6,
       name: "Content Provider Employee",
       isActive: false
     },
     {
-      id: 2,
+      id: 7,
       name: "Content Provider Employee",
       isActive: false
     },
     {
-      id: 2,
+      id: 8,
       name: "Content Provider Employee",
       isActive: false
     },
     {
-      id: 2,
+      id: 9,
       name: "Content Provider Employee",
       isActive: false
     },
     {
-      id: 2,
+      id: 10,
       name: "Content Provider Employee",
       isActive: false
     },
     {
-      id: 2,
+      id: 11,
       name: "Content Provider Employee",
       isActive: false
     }
   ],
   textKey: "name",
-  idKey: "id",
+  idKey: "id"
   // disabled:true
 };

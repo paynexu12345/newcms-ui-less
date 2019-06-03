@@ -4,45 +4,51 @@ import {
   OnInit,
   HostListener,
   Input,
-  OnDestroy
+  OnDestroy,
+  forwardRef
 } from "@angular/core";
-import {
-  commonInitCfg,
-  filterActiveItem,
-} from "../comp-utils";
-import {
-  DEFAULT_NGPOP_SELECT_CONFIG,
-  NgPopSelectItem
-} from "./class";
+import { commonInitCfg, filterActiveItem } from "../comp-utils";
+import { DEFAULT_SELECT_CONFIG, NgPopSelectItem } from "./class";
 import { NgPopSelectDropdownItemComponent } from "./select-dropdown-item/select-dropdown-item.component";
 import { NgPopSelectDefaultComponent } from ".";
 import { NgPopSelectIconComponent } from "./select-icon/select-icon.component";
-import { NgPopSelectService } from './select.service';
-import { NgPopSelectInputComponent } from './select-input/select-input.component';
-import { ContainerComponent } from '../base';
+import { NgPopSelectService } from "./select.service";
+import { NgPopSelectInputComponent } from "./select-input/select-input.component";
+import { ContainerComponent } from "../base";
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
+import { deepCopy } from "../../utils";
 
 @Component({
   selector: "ng-pop-select",
   templateUrl: "./select.component.html",
-  styleUrls: ["./select.component.less"]
+  styleUrls: ["./select.component.less"],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => NgPopSelectComponent),
+      multi: true
+    }
+  ]
 })
-export class NgPopSelectComponent extends ContainerComponent<NgPopSelectDropdownItemComponent>
-  implements OnInit, OnDestroy {
-  constructor(
-    public selectService: NgPopSelectService
-  ) { 
+export class NgPopSelectComponent
+  extends ContainerComponent<NgPopSelectDropdownItemComponent>
+  implements OnInit, OnDestroy,ControlValueAccessor {
+  constructor(public selectService: NgPopSelectService) {
     super();
   }
-  config = DEFAULT_NGPOP_SELECT_CONFIG;
+  config = DEFAULT_SELECT_CONFIG;
   rootCssClass = "ng-pop-select";
   defaultItemComp: NgPopSelectDefaultComponent;
   iconItemComp: NgPopSelectIconComponent;
   inputComp: NgPopSelectInputComponent;
-  activeItem: NgPopSelectItem;
+  activeItem: NgPopSelectItem = new NgPopSelectItem();
+  items: NgPopSelectItem = [];
   @Input("config")
   set _config(val) {
     commonInitCfg(this, val);
-    this.activeItem = filterActiveItem(this.config.items);
+    this.items = deepCopy(this.config.items);
+    //This value would be overwriten by the value in writeValue method, and the function of this value is to set a default value if no ngModel attribute is bind
+    this.activeItem = this.items[0];
   }
 
   @HostListener("click", ["$event"])
@@ -51,11 +57,34 @@ export class NgPopSelectComponent extends ContainerComponent<NgPopSelectDropdown
     this.selectService.deactivateAllExcept(this);
     this.isActive = !this.isActive;
   }
+  propagateChange: any = () => {};
+  registerOnChange(fn) {
+    this.propagateChange = fn;
+  }
 
+  registerOnTouched() {}
+  writeValue(val) {
+    if (val != null && val != undefined) {
+      let i = 0;
+      this.items.forEach((item,index)=>{
+        if(item[this.config.idKey] == val){
+          i = index;
+          item.isActive = true;
+        } else {
+          item.isActive = false;
+        }
+      });
+      if (i >= 0) {
+        this.activeItem = this.items[i];
+      } else {
+        this.activeItem = this.items[0];
+      }
+    }
+  }
   ngOnInit() {
-    this.selectService.addChildComp(this);  
+    this.selectService.addMainSubComp(this);
   }
   ngOnDestroy() {
-    this.selectService.removeChildComp(this);
+    this.selectService.removeMainSubComp(this);
   }
 }

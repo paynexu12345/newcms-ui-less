@@ -1,21 +1,20 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from "@angular/core";
 import { NgPopCarouselComponent } from "../carousel.component";
-import { applyMixins } from '../../comp-utils';
-import { ChildComponent } from '../../base';
+import { SubComponent } from '../../base';
 
 @Component({
   selector: "ng-pop-carousel-item",
   templateUrl: "./carousel-item.component.html",
   styleUrls: ["./carousel-item.component.css"]
 })
-export class NgPopCarouselItemComponent extends ChildComponent implements OnInit, OnDestroy{
+export class NgPopCarouselItemComponent extends SubComponent implements OnInit, OnDestroy{
   constructor(public containerComp: NgPopCarouselComponent) {
     super();
   }
   ngOnInit() {
-    this.containerComp.addChildComp(this);
+    this.containerComp.addMainSubComp(this);
   }
   ngOnDestroy() {
-    this.containerComp.removeChildComp(this);
+    this.containerComp.removeMainSubComp(this);
   }
 }

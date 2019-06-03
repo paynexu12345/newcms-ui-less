@@ -33,17 +33,22 @@
           content2
         </cms-tab>
       </cms-tabset> -->
-      <ng-pop-tabset>
-        <ng-pop-tab-item>Tab1</ng-pop-tab-item>
-        <ng-pop-tab-item>Tab2</ng-pop-tab-item>
+      <ng-pop-tabset [config]="tabConfig1">
+          <!-- <div class="tabset-header"> -->
+            <ng-pop-tab-content-item [item]="tabConfig1.items[0]" (activate)="onTabItemActivate()">
+                Tab1 content
+            </ng-pop-tab-content-item>
+            <ng-pop-tab-content-item [item]="tabConfig1.items[1]">
+                Tab2 content
+            </ng-pop-tab-content-item>
+            <ng-pop-tab-content-item [item]="tabConfig1.items[2]">
+                Tab3 content
+            </ng-pop-tab-content-item>
+              <!-- <ng-pop-tab-nav-item [item]="tabConfig1.items[0]" (activate)="onTabItemActivate()">Tab1 content</ng-pop-tab-nav-item>
+              <ng-pop-tab-nav-item [item]="tabConfig1.items[1]">Tab2 content</ng-pop-tab-nav-item>
+              <ng-pop-tab-nav-item [item]="tabConfig1.items[2]">Tab4 content</ng-pop-tab-nav-item> -->
+          <!-- </div> -->
       </ng-pop-tabset>
-      <!-- <div class="tab">
-          <ul class="tab-nav">
-            <li class="tab-nav-item active">Tab1</li>
-            <li class="tab-nav-item">Tab2</li>
-          </ul>
-          <div class="tab-flag"></div>
-        </div> -->
     </div>
   </div>
   <div class="card">
@@ -130,6 +135,15 @@
       
       <div>
           <ng-pop-select [config]="selectConfig2"></ng-pop-select>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="header">Button Group</div>
+    <div class="body">
+      
+      <div>
+          <ng-pop-btn-group></ng-pop-btn-group>
       </div>
     </div>
   </div>

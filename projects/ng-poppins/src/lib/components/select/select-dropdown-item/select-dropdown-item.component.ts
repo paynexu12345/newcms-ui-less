@@ -1,28 +1,36 @@
-import { Component, OnInit, HostListener, Input, OnDestroy, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  HostListener,
+  Input,
+  OnDestroy
+} from "@angular/core";
 import { NgPopSelectComponent } from "../select.component";
 import { NgPopSelectItem } from "../class";
-import { ChildComponent } from '../../base';
+import { SubComponent, MainSubComponent } from "../../base";
 
 @Component({
   selector: "ng-pop-select-dropdown-item",
   templateUrl: "./select-dropdown-item.component.html",
   styleUrls: ["./select-dropdown-item.component.less"]
 })
-export class NgPopSelectDropdownItemComponent extends ChildComponent
-  implements OnInit, OnDestroy, ChildComponent {
-  constructor(public containerComp: NgPopSelectComponent) { 
+export class NgPopSelectDropdownItemComponent extends MainSubComponent<NgPopSelectItem>
+  implements OnInit, OnDestroy, SubComponent {
+  constructor(public containerComp: NgPopSelectComponent) {
     super();
   }
-  hide = false;
+  isHide = false;
   sub1 = null;
-  item: NgPopSelectItem;
   @Input("item")
-  set _item(val) {
+  set item(val) {
     if (val) {
       this.isDisabled = val.isDisabled;
       this.isActive = val.isActive;
-      this.item = val;
+      this._item = val;
     }
+  }
+  get item(){
+    return this._item;
   }
   @HostListener("click", ["$event"])
   onclick($event) {
@@ -32,21 +40,26 @@ export class NgPopSelectDropdownItemComponent extends ChildComponent
       this.containerComp.activeItem.isActive = false;
       this.containerComp.activeItem = this.item;
       this.containerComp.isActive = false;
+      this.containerComp.propagateChange(this.item[this.containerComp.config.idKey])
     }
   }
   ngOnInit() {
-    this.containerComp.addChildComp(this);
+    this.containerComp.addMainSubComp(this);
     if (this.containerComp.inputComp)
       this.sub1 = this.containerComp.inputComp.onSearch.subscribe(text => {
-        if (this.item[this.containerComp.config.textKey].toLowerCase().indexOf(text) >= 0) {
-          this.hide = false;
+        if (
+          this.item[this.containerComp.config.textKey]
+            .toLowerCase()
+            .indexOf(text) >= 0
+        ) {
+          this.isHide = false;
         } else {
-          this.hide = true;
+          this.isHide = true;
         }
       });
   }
   ngOnDestroy() {
-    this.containerComp.removeChildComp(this);
+    this.containerComp.removeMainSubComp(this);
     if (this.sub1) this.sub1.unsubscribe();
   }
 }

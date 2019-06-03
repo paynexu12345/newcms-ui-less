@@ -9,16 +9,19 @@ export const HEADER_NAVS: HeaderNavItem[] = [
   {
     id: NAVITEM_ID_HOME,
     url: 'https://newcms.neulion.net.cn:8443/home',
-    referTo: ''
+    referTo: '',
+    text:"Home"
   },
   {
     id: NAVITEM_ID_CONTENT,
     url: 'https://newcms.neulion.net.cn:8080/content',
-    referTo: _APP_CONTENT_NAME
+    referTo: _APP_CONTENT_NAME,
+    text:"Content"
   },
   {
     id: NAVITEM_ID_CUSTOMER,
     url: 'https://newcms.neulion.net.cn:8443/customer',
-    referTo: ''
+    referTo: '',
+    text:"Customer"
   }
 ];

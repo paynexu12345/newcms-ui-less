@@ -45,13 +45,13 @@ export function filterActiveItem<T>(items: T[]): T {
 export function commonActivateOnInit(component) {
   setTimeout(() => {
     if (
-      component.childComps &&
-      component.childComps instanceof Array &&
+      component.mainSubComps &&
+      component.mainSubComps instanceof Array &&
       component.config &&
       component.config.activeIndex >= 0 &&
-      component.config.activeIndex < component.childComps.length - 1
+      component.config.activeIndex < component.mainSubComps.length - 1
     ) {
-      component.childComps[component.config.activeIndex].activate();
+      component.mainSubComps[component.config.activeIndex].activate();
     }
   }, 100);
 }

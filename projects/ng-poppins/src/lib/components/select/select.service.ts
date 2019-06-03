@@ -9,7 +9,7 @@ export class NgPopSelectService
     super();
   }
   deactivateAllExcept(comp: NgPopSelectComponent) {
-    this.childComps.forEach(child => {
+    this.mainSubComps.forEach(child => {
       if (comp != child) {
         child.isActive = false;
       }
