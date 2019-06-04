@@ -1,7 +1,35 @@
-<table class="table">
+<table [class]="rootCssClass">
   <thead>
     <tr>
+      <th *ngIf="config.showBatchSelect"></th>
+      <th *ngFor="let header of config.headers" [style.width]="header.width">{{header.text}}</th>
       <th></th>
     </tr>
   </thead>
+  <tbody>
+    <tr *ngFor="let rowData of containerComp.data">
+      <td *ngIf="config.showBatchSelect"></td>
+      <td *ngFor="let header of config.headers">
+        <ng-container *ngFor="let field of header.fields">
+          <ng-container *ngIf="field.type == TEXT_FIELD_TYPE">
+            {{rowData[field.key]}}
+          </ng-container>
+          <ng-container *ngIf="field.type == TEXT_LINK_FIELD_TYPE">
+              {{rowData[field.key]}}
+          </ng-container>
+          <ng-container *ngIf="field.type == CHECKBOX_FIELD_TYPE">
+            
+          </ng-container>
+          <ng-container *ngIf="field.type == IMAGE_FIELD_TYPE">
+            <img [src]="rowData[field.key]" alt="image">
+          </ng-container>
+          <ng-container *ngIf="field.type == IMAGE_LINK_FIELD_TYPE">
+            
+          </ng-container>
+          
+        </ng-container>
+      </td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>

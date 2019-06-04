@@ -17,6 +17,7 @@ import {
   NgPopBtnGroupConfig,
   DEFAULT_BTN_GROUP_CONFIG
 } from "projects/ng-poppins/src/lib/components/btn-group/class";
+import { DEFAULT_TABLE_SUITE_CONFIG, TABLE_DATA } from 'projects/ng-poppins/src/lib/components/table-suite/class';
 // import { CmsLayout1Config } from 'project-shared/layout/layout.class';
 // import { generateActiveNavItem } from 'project-shared/components/cms-header/cms-header-nav/generateActiveNavItem';
 // import { ID_CONTENT, FROM_INDEX } from 'project-shared/constant';
@@ -82,6 +83,8 @@ export class ContentHomeComponent implements OnInit {
     {},
     DEFAULT_BTN_GROUP_CONFIG
   );
+  tableSuiteConfig = DEFAULT_TABLE_SUITE_CONFIG;
+  tableSuiteData = TABLE_DATA;
   onTabItemActivate() {
     //  alert(1);
   }
