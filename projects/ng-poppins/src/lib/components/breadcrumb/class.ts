@@ -1,4 +1,4 @@
-import { NgPopBaseConfig } from '../base';
+import { NgPopBaseConfig } from "../base";
 
 export class Breadcrumb {
   name: string;
@@ -13,4 +13,4 @@ export class BreadcrumbConfig implements NgPopBaseConfig {
 export const DEFAULT_BREADCRUMB_CONFIG: BreadcrumbConfig = {
   items: [],
   cssClasses: []
-}
+};

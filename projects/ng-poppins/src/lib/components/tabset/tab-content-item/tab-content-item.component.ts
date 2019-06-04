@@ -2,13 +2,15 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { MainSubComponent } from '../../base';
 import { NgPopTabsetComponent } from '../tabset.component';
 import { NgPopTabItem } from '../class';
-import { fadeInFactory } from '../../../animations';
+import { fadeInFactory, slideInLeftFactory } from '../../../animations';
+import { DEFAULT_TIMING } from '../../../animations/class';
 let fadeIn = fadeInFactory();
+let slideInLeft = slideInLeftFactory("slideInLeft",DEFAULT_TIMING,"5%")
 @Component({
   selector: 'ng-pop-tab-content-item',
   templateUrl: './tab-content-item.component.html',
   styleUrls: ['./tab-content-item.component.less'],
-  animations:[fadeIn]
+  animations:[fadeIn,slideInLeft]
 })
 export class NgPopTabContentItemComponent extends MainSubComponent<NgPopTabItem>
 implements OnInit, OnDestroy {

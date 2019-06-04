@@ -1,12 +1,15 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnDestroy } from "@angular/core";
 import { _addEventListener, _removeEventListener } from "../../utils";
 import { checkIsPcSize } from "../../utils";
 @Injectable()
-export class PageModeService {
-  constructor() {
+export class PageModeService implements OnDestroy
+{
+  constructor()
+  {
     let self = this;
     this.pageModeInit();
-    this.resize_eventListener_funcWrapper = function() {
+    this.resize_eventListener_funcWrapper = function ()
+    {
       self.windowResize();
     };
     _addEventListener.call(
@@ -24,42 +27,56 @@ export class PageModeService {
   pageMode = PAGE_MODE_LARGE;
   resizeFlag;
   resize_eventListener_funcWrapper;
-  windowResize() {
-    clearTimeout(this.resizeFlag);
-    this.resizeFlag = setTimeout(() => {
+  windowResize()
+  {
+    clearTimeout( this.resizeFlag );
+    this.resizeFlag = setTimeout( () =>
+    {
       let windowWidth_New = window.innerWidth;
-      if (windowWidth_New != this.winW) this.pageModeInit();
-    }, 200);
+      if ( windowWidth_New != this.winW ) this.pageModeInit();
+    }, 200 );
   }
-  pageModeSwitch() {
-    if (!checkIsPcSize()) {
-      if (this.width == "0px") {
+  pageModeSwitch()
+  {
+    if ( !checkIsPcSize() )
+    {
+      if ( this.width == "0px" )
+      {
         this.width = this.miniModeWidth;
-      } else {
+      } else
+      {
         this.width = "0px";
       }
-    } else {
-      if (this.pageMode == PAGE_MODE_LARGE) {
+    } else
+    {
+      if ( this.pageMode == PAGE_MODE_LARGE )
+      {
         this.pageMode = PAGE_MODE_SMALL;
         this.width = this.miniModeWidth;
-      } else {
+      } else
+      {
         this.pageMode = PAGE_MODE_LARGE;
         this.width = this.largeModeWidth;
       }
     }
   }
-  pageModeInit() {
+  pageModeInit()
+  {
     this.winW = window.innerWidth;
-    if (checkIsPcSize()) {
+    if ( checkIsPcSize() )
+    {
       this.width = this.largeModeWidth;
       this.pageMode = PAGE_MODE_LARGE;
-    } else {
+    } else
+    {
       this.width = this.miniModeWidth;
       this.pageMode = PAGE_MODE_SMALL;
     }
   }
-  ngOnDestroy() {
-    if (this.resize_eventListener_funcWrapper)
+
+  ngOnDestroy()
+  {
+    if ( this.resize_eventListener_funcWrapper )
       _removeEventListener(
         window,
         "resize",

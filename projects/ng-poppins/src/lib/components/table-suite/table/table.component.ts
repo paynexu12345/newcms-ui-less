@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'lib-table',
+  selector: 'ng-pop-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.less']
 })
-export class TableComponent implements OnInit {
+export class NgPopTableComponent implements OnInit
+{
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit()
+  {
   }
 
 }

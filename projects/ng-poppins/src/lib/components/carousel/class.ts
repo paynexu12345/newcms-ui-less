@@ -1,4 +1,4 @@
-import { NgPopBaseConfig } from '../base';
+import { NgPopBaseConfig } from "../base";
 
 export class CarouselConfig implements NgPopBaseConfig {
   width?: number;
@@ -15,4 +15,4 @@ export const DEFAULT_CAROUSEL_CONFIG: CarouselConfig = {
   autoPlay: false,
   autoPlayInterval: 3000,
   cssClasses: []
-}
+};

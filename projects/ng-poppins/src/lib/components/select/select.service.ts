@@ -1,16 +1,20 @@
-import { Injectable } from "@angular/core";
-import { NgPopSelectComponent } from "./select.component";
-import { ContainerService } from '../base';
+import {Injectable} from "@angular/core";
+import {NgPopSelectComponent} from "./select.component";
+import {ContainerService} from '../base';
 
 @Injectable()
 export class NgPopSelectService
   extends ContainerService<NgPopSelectComponent> {
-  constructor() {
+  constructor()
+  {
     super();
   }
-  deactivateAllExcept(comp: NgPopSelectComponent) {
-    this.mainSubComps.forEach(child => {
-      if (comp != child) {
+  deactivateAllExcept(comp: NgPopSelectComponent)
+  {
+    this.mainSubComps.forEach(child =>
+    {
+      if(comp != child)
+      {
         child.isActive = false;
       }
     })

@@ -19,17 +19,8 @@ import { DEFAULT_TIMING } from "./class";
  * @param name
  * @param timing 
  */
-export function slideLeftFactory(name = "slideLeft", timing = DEFAULT_TIMING,offset = "-100%") {
+export function slideInLeftFactory(name = "slideInLeft", timing = DEFAULT_TIMING,offset = "-100%") {
   return trigger(name, [
-    state("active", style({
-      transform: "translateX(0)",
-      opacity: 1
-    })),
-    state("inactive", style({
-      transform: "translateX(" + offset+")",
-      opacity: 0
-    })),
-    transition("active <=> inactive",animate(timing)),
     transition(":enter", [
       style({
         transform: "translateX(" + offset + ")",
@@ -40,19 +31,6 @@ export function slideLeftFactory(name = "slideLeft", timing = DEFAULT_TIMING,off
         style({
           transform: "translateX(0)",
           opacity: 1
-        })
-      )
-    ]),
-    transition(":leave", [
-      style({
-        transform: "translateX(0)",
-        opacity: 1
-      }),
-      animate(
-        timing,
-        style({
-          transform: "translateX(" + offset + ")",
-          opacity: 0
         })
       )
     ])

@@ -5,11 +5,10 @@ import { commonInitCfg } from "../comp-utils";
 import { ContainerComponent } from '../base';
 import { NgPopTabNavItemComponent } from './tab-nav-item/tab-nav-item.component';
 import { NgPopTabContentItemComponent } from './tab-content-item/tab-content-item.component';
-
 @Component({
   selector: "ng-pop-tabset",
   templateUrl: "./tabset.component.html",
-  styleUrls: ["./tabset.component.css"]
+  styleUrls: ["./tabset.component.css"],
 })
 export class NgPopTabsetComponent extends ContainerComponent<NgPopTabNavItemComponent>
   implements OnInit {
@@ -21,10 +20,13 @@ export class NgPopTabsetComponent extends ContainerComponent<NgPopTabNavItemComp
   flagComp: NgPopTabFlagComponent;
   rootCssClass = "ng-pop-tab";
   reservedCssClasses: string[] = [];
-  config: NgPopTabConfig = DEFAULT_TAB_CONFIG;
+  _config: NgPopTabConfig = DEFAULT_TAB_CONFIG;
   @Input("config")
-  set _config(val) {
+  set config(val) {
     commonInitCfg(this, val);
+  }
+  get config(){
+    return this._config;
   }
 
   addContentComp(comp:NgPopTabContentItemComponent){

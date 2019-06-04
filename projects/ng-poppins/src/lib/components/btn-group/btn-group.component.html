@@ -1,22 +1,12 @@
-<div class="ng-pop-btn-group">
-  <div class="ng-pop-btn-group-default">
-    <span class="btn sub">Add</span> 
-  </div>
-  <div class="ng-pop-btn-group-arrow">
-    <span class="iconfont icon-arr-d"></span>
-  </div>
-  <div class="ng-pop-btn-group-dropdown down-left">
-    <div class="ng-pop-btn-group-dropdown-item">
-        <span class="btn danger">Remove</span> 
-    </div>
-    <div class="ng-pop-btn-group-dropdown-item">
-        <span class="btn sub">Remove</span> 
-    </div>
-    <div class="ng-pop-btn-group-dropdown-item">
-        <span class="btn sub">Remove</span> 
-    </div>
-    <div class="ng-pop-btn-group-dropdown-item">
-        <span class="btn sub">Remove</span> 
-    </div>
-  </div>
+<div [class]="rootCssClass">
+  <ng-pop-btn-group-default-item
+    [item]="activeItem"
+  ></ng-pop-btn-group-default-item>
+  <ng-pop-btn-group-arrow></ng-pop-btn-group-arrow>
+  <ng-pop-btn-group-dropdown *ngIf="isActive">
+    <ng-pop-btn-group-dropdown-item
+      *ngFor="let item of dropdownItems"
+      [item]="item"
+    ></ng-pop-btn-group-dropdown-item>
+  </ng-pop-btn-group-dropdown>
 </div>

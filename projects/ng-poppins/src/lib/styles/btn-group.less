@@ -1,6 +1,6 @@
 @import "base.less";
-@c1:#E9EBF9;
-.ng-pop-btn-group{
+@c1: #e9ebf9;
+.ng-pop-btn-group {
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -8,15 +8,17 @@
   line-height: 32px;
   padding: 0 32px 0 0;
   background: @color_light2;
+  z-index: 10;
   .btn {
     border-radius: 0;
   }
-  .btn:not(.disabled):hover{
-    background: darken(@c1,5%);
+  .btn:not(.disabled):not([disabled]):hover {
+    background: darken(@c1, 5%);
     opacity: 1;
   }
-  .ng-pop-btn-group-default{}
-  .ng-pop-btn-group-arrow{
+  .ng-pop-btn-group-default {
+  }
+  .ng-pop-btn-group-arrow {
     position: absolute;
     right: 0;
     top: 0;
@@ -27,23 +29,28 @@
     color: @color_main;
     background: @c1;
     cursor: pointer;
-    transition:background @anim_timing_func;
-    .iconfont{
+    transition: all @anim_timing_func;
+    .iconfont {
       font-size: 12px;
       font-weight: bold;
     }
-    &:hover{
-      background: darken(@c1,5%);
+    &:hover {
+      background: darken(@c1, 5%);
     }
     // &:active{
     //   background: @c1;
     // }
   }
-  .ng-pop-btn-group-dropdown{
+  .ng-pop-btn-group-dropdown {
     position: absolute;
-    
-    .ng-pop-btn-group-dropdown-item{
-      
+    background: @color_light2;
+    box-shadow: @box_shadow2;
+    .ng-pop-btn-group-dropdown-item {
+      .btn {
+        display: block;
+        width: 100%;
+        text-align: left;
+      }
     }
     &.down-left {
       top: 32px;

@@ -5,52 +5,63 @@ import { slideDownFactory, fadeInFactory, fadeInDownFactory } from '../../animat
 import { CSS_CLASS_NAME_PREFIX } from '../comp-utils';
 import { slideInDownFactory } from '../../animations/slide-in-down.factory';
 
-const slideDown = slideDownFactory('slideDown', '.1s ease-out');
+const slideDown = slideDownFactory( 'slideDown', '.1s ease-out' );
 const fadeIn = fadeInFactory();
 const fadeInDown = fadeInDownFactory();
 const slideInDown = slideInDownFactory();
-@Component({
-  animations: [fadeIn, slideDown,fadeInDown,slideInDown],
+@Component( {
+  animations: [fadeIn, slideDown, fadeInDown, slideInDown],
   selector: 'ng-pop-sidebar-lg',
   templateUrl: './sidebar-large.component.html'
-})
-export class NgPopSidebarLargeComponent implements OnInit {
-  constructor(
+} )
+export class NgPopSidebarLargeComponent implements OnInit
+{
+  constructor (
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public elementRef: ElementRef,
     public renderer: Renderer
-  ) {}
+  ) { }
   window = window;
   CSS_CLASS_NAME_PREFIX = CSS_CLASS_NAME_PREFIX;
   @Input() menus: Menu[] = [];
-  clickFirstMenu(e, targetMenu: Menu) {
+  clickFirstMenu ( e, targetMenu: Menu )
+  {
     e.preventDefault();
-    if (targetMenu.url) {
-      this.router.navigateByUrl(targetMenu.url);
+    if ( targetMenu.url )
+    {
+      this.router.navigateByUrl( targetMenu.url );
       return;
     }
-    this.menus.forEach(menu => {
-      if (menu !== targetMenu) {
+    this.menus.forEach( menu =>
+    {
+      if ( menu !== targetMenu )
+      {
         menu.isOpen = false;
       }
-    });
+    } );
     targetMenu.isOpen = !targetMenu.isOpen;
   }
-  clickSecondMenu(e, targetMenu, secondMenu) {
+  clickSecondMenu ( e, targetMenu, secondMenu )
+  {
     e.preventDefault();
-    if (secondMenu.url) {
+    if ( secondMenu.url )
+    {
       // targetMenu.isActive = true;
-      this.router.navigateByUrl(secondMenu.url);
+      this.router.navigateByUrl( secondMenu.url );
     }
   }
-  ngOnInit() {
-    this.menus.forEach(menu => {
-      if (menu.isActive) {
+  ngOnInit ()
+  {
+    this.menus.forEach( menu =>
+    {
+      if ( menu.isActive )
+      {
         menu.isOpen = true;
-      } else {
+      } else
+      {
         menu.isOpen = false;
       }
-    });
+    } );
   }
 }

@@ -21,11 +21,14 @@ export class NgPopCarouselComponent
   autoPlayIntervalId = null;
   mainSubComps: NgPopCarouselItemComponent[] = [];
   rootCssClass = "ng-pop-carousel";
-  config: CarouselConfig = DEFAULT_CAROUSEL_CONFIG;
+  _config: CarouselConfig = DEFAULT_CAROUSEL_CONFIG;
   @Input("config")
-  set _config(val) {
+  set config(val) {
     commonInitCfg(this, val);
     this.init();
+  }
+  get config() {
+    return this._config;
   }
   setStageSize(cfg: CarouselConfig) {
     this.stageWidth = cfg.width;

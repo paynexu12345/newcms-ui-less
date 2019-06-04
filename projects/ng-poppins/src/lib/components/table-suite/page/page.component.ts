@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'lib-page',
+  selector: 'ng-pop-page',
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.less']
 })
-export class PageComponent implements OnInit {
+export class NgPopTableSuitePageComponent implements OnInit
+{
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit()
+  {
   }
 
 }

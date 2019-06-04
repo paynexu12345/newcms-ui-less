@@ -1,33 +1,40 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { commonActivateOnInit, commonInitCfg } from "../comp-utils";
+import { commonInitCfg } from "../comp-utils";
 import { DEFAULT_HEADER_NAV_CONFIG } from "./class";
 import { NgPopHeaderNavItemComponent } from "./header-nav-item/header-nav-item.component";
 import { ContainerComponent } from "../base";
-@Component({
+@Component( {
   selector: "ng-pop-header-nav",
   templateUrl: "header-nav.component.html"
-})
+} )
 export class NgPopHeaderNavComponent
   extends ContainerComponent<NgPopHeaderNavItemComponent>
-  implements OnInit {
+  implements OnInit
+{
   mainSubComps: any;
-  constructor() {
+  constructor ()
+  {
     super();
   }
   items: NgPopHeaderNavItemComponent[] = [];
-  config = DEFAULT_HEADER_NAV_CONFIG;
+  _config = DEFAULT_HEADER_NAV_CONFIG;
   rootCssClass = "ng-pop-header-nav";
-  @Input("config")
-  set _config(val) {
-    commonInitCfg(this, val);
+  @Input( "config" )
+  set config ( val )
+  {
+    commonInitCfg( this, val );
   }
-  addMainSubComp(comp: NgPopHeaderNavItemComponent) {
-    this.commonAddMainSubComp(comp);
+  get config ()
+  {
+    return this._config;
   }
-  removeMainSubComp(comp: NgPopHeaderNavItemComponent) {
-    this.commonRemoveMainSubComp(comp);
+  addMainSubComp ( comp: NgPopHeaderNavItemComponent )
+  {
+    this.commonAddMainSubComp( comp );
   }
-  ngOnInit() {
-    commonActivateOnInit(this);
+  removeMainSubComp ( comp: NgPopHeaderNavItemComponent )
+  {
+    this.commonRemoveMainSubComp( comp );
   }
+  ngOnInit () { }
 }

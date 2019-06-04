@@ -5,8 +5,9 @@
 @br: 3px;
 .btn {
   display: inline-block;
+  height: 32px;
+  line-height: 32px;
   margin-bottom: 0;
-  line-height: 1.7;
   font-weight: normal;
   text-align: center;
   white-space: nowrap;
@@ -15,8 +16,8 @@
   touch-action: manipulation;
   cursor: pointer;
   background-image: none;
-  border: 1px solid transparent;
-  padding: @pud @plr;
+  border: 0;
+  padding: 0 @plr;
   font-size: @fz;
   font-family: @font_sb;
   border-radius: 3px;
@@ -26,7 +27,7 @@
   -ms-user-select: none;
   user-select: none;
   transition:all @anim_timing_func;
-  &:hover {
+  &:not([disabled]):not(.disabled):hover {
     opacity: 0.75;
   }
   &:active {
@@ -45,12 +46,14 @@
     color: @color_danger;
   }
   &@{selector-sm} {
-    padding: @pud*2 / 3 @plr*2 / 3;
+    height: 26px;
+    line-height: 26px;
     font-size: @fz - 2;
     border-radius: @br - 1;
   }
   &@{selector-lg} {
-    padding: @pud*4 / 3 @plr*4 / 3;
+    height: 40px;
+    line-height: 40px;
     font-size: @fz + 2;
     border-radius: @br + 1;
   }
@@ -58,8 +61,8 @@
   &[disabled] {
     color: @color_disabled;
     cursor: not-allowed;
-    filter: alpha(opacity=65);
-    opacity: 0.65;
+    // filter: alpha(opacity=65);
+    // opacity: 0.65;
     -webkit-box-shadow: none;
     box-shadow: none;
   }

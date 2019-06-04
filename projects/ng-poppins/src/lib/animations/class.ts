@@ -1,1 +1,1 @@
-export const DEFAULT_TIMING = ".15s cubic-bezier(.645, .045, .355, 1)";
+export const DEFAULT_TIMING = ".2s cubic-bezier(.645, .045, .355, 1)";

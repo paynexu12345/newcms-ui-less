@@ -1,11 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Layout1Config } from '../layout/layout.class';
-import { geneNavConfig } from '../header/generateActiveNavItem';
-import { NAVITEM_ID_CONTENT } from 'src/app-config';
-import { PageModeService, NgPopSelectConfig, DEFAULT_SELECT_CONFIG } from 'projects/ng-poppins/src/public-api';
-import { BreadcrumbConfig } from 'projects/ng-poppins/src/lib/components/breadcrumb';
-import { MENUS_CONTENT } from '../../content-config';
-import { NgPopTabConfig, DEFAULT_TAB_CONFIG } from 'projects/ng-poppins/src/lib/components/tabset';
+import { Component, OnInit } from "@angular/core";
+import { Layout1Config } from "../layout/layout.class";
+import { geneNavConfig } from "../header/generateActiveNavItem";
+import { NAVITEM_ID_CONTENT } from "src/app-config";
+import {
+  PageModeService,
+  NgPopSelectConfig,
+  DEFAULT_SELECT_CONFIG
+} from "projects/ng-poppins/src/public-api";
+import { BreadcrumbConfig } from "projects/ng-poppins/src/lib/components/breadcrumb";
+import { MENUS_CONTENT } from "../../content-config";
+import {
+  NgPopTabConfig,
+  DEFAULT_TAB_CONFIG
+} from "projects/ng-poppins/src/lib/components/tabset";
+import {
+  NgPopBtnGroupConfig,
+  DEFAULT_BTN_GROUP_CONFIG
+} from "projects/ng-poppins/src/lib/components/btn-group/class";
 // import { CmsLayout1Config } from 'project-shared/layout/layout.class';
 // import { generateActiveNavItem } from 'project-shared/components/cms-header/cms-header-nav/generateActiveNavItem';
 // import { ID_CONTENT, FROM_INDEX } from 'project-shared/constant';
@@ -14,14 +25,12 @@ import { NgPopTabConfig, DEFAULT_TAB_CONFIG } from 'projects/ng-poppins/src/lib/
 // import { CmsBreadcrumb } from 'projects/ngx-cms-common/src/lib/controls/cms-breadcrumb/cms-breadcrumb';
 
 @Component({
-  selector: 'app-content-home',
-  templateUrl: './content-home.component.html',
-  styleUrls: ['./content-home.component.less'
-    ]
+  selector: "app-content-home",
+  templateUrl: "./content-home.component.html",
+  styleUrls: ["./content-home.component.less"]
 })
 export class ContentHomeComponent implements OnInit {
-
-  constructor(public pageModeService: PageModeService) { }
+  constructor(public pageModeService: PageModeService) {}
   breadcrumbConfig: BreadcrumbConfig = {
     items: [
       {
@@ -68,11 +77,16 @@ export class ContentHomeComponent implements OnInit {
     cssClasses: ["white"]
     // disabled:true
   };
-  tabConfig1:NgPopTabConfig = Object.assign({},DEFAULT_TAB_CONFIG,{eject:true});
-  onTabItemActivate(){
-     alert(1);
+  tabConfig1: NgPopTabConfig = Object.assign({}, DEFAULT_TAB_CONFIG);
+  btnGroupConfig: NgPopBtnGroupConfig = Object.assign(
+    {},
+    DEFAULT_BTN_GROUP_CONFIG
+  );
+  onTabItemActivate() {
+    //  alert(1);
   }
-  ngOnInit() {
+  clickBtn($event) {
+    alert($event.id);
   }
-
+  ngOnInit() {}
 }

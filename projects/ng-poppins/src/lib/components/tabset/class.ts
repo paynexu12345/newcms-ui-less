@@ -1,9 +1,10 @@
 import { NgPopBaseConfig } from '../base';
 
 export class NgPopTabConfig implements NgPopBaseConfig{
+  isActive?: boolean;
+  isDisabled?: boolean;
   items:NgPopTabItem[];
   cssClasses?: string[];
-  eject?:boolean;
 }
 export class NgPopTabItem {
   header : string;

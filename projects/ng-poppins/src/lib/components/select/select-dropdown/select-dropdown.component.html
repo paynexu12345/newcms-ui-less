@@ -1,8 +1,15 @@
-<div class="ng-pop-select-dropdown" [@fadeInDown] #element [class.down-left]="direction == 'downLeft'" [class.down-right]="direction == 'downRight'"
-[class.up-left]="direction == 'upLeft'" [class.up-right]="direction == 'upRight'"
-[style.visibility]="isVisible ? 'visible' : 'hidden'" [style.min-width]="containerComp.config.width">
-  <div  style="overflow:auto;" [style.max-height]="maxHeight" #scrollElement>
-    <ng-pop-select-dropdown-item [item]="item" *ngFor="let item of containerComp.items">
-    </ng-pop-select-dropdown-item>
+<div
+  class="ng-pop-select-dropdown"
+  [@fadeInDown]
+  #element
+  [class.down-left]="direction == 'downLeft'"
+  [class.down-right]="direction == 'downRight'"
+  [class.up-left]="direction == 'upLeft'"
+  [class.up-right]="direction == 'upRight'"
+  [style.visibility]="isVisible ? 'visible' : 'hidden'"
+  [style.min-width]="containerComp.config.width"
+>
+  <div style="overflow:auto;" [style.max-height]="maxHeight" #scrollElement>
+    <ng-content></ng-content>
   </div>
 </div>
