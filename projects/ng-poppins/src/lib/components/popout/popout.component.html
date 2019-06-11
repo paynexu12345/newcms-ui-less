@@ -1,0 +1,21 @@
+
+<div class="ng-pop-popout" *ngIf="isActive">
+  <div class="ng-pop-mask" (click)="clickMask($event)"></div>
+  <div class="ng-pop-popout-content" [@fadeIn]>
+    <div class="card">
+      <div class="header">
+        <span class="ng-pop-popout-title">Test popout</span>
+        <div class="r">
+          <span class="iconfont icon-close ng-pop-popout-close"
+            (click)="clickClose($event)"></span>
+        </div>
+      </div>
+      <div class="body">
+        <ng-content></ng-content>
+      </div>
+      <div class="ng-pop-popout-footer">
+        <button class="btn main">Select</button>
+      </div>
+    </div>
+  </div>
+</div>

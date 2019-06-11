@@ -1,0 +1,17 @@
+@import "base.less";
+.ng-pop-checkbox{
+  font-size: 20px;
+  color: @color_dark2;
+  cursor: pointer;
+  &:not(.disabled):not(.active):hover{
+    color: lighten(@color_main,10%);
+    
+  }
+  &:not(.disabled).active{
+    color: @color_main;
+  }
+  &.disabled{
+    color:@color_disabled;
+    cursor: not-allowed;
+  }
+}

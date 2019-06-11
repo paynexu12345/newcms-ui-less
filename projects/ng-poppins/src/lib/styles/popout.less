@@ -1,0 +1,34 @@
+@import "./base.less";
+.ng-pop-popout{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  .ng-pop-popout-content{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%,-50%,0);
+    width: 600px;
+    max-width: 90%;
+    .ng-pop-popout-close{
+    // position: absolute;
+    // left: 0;
+    // top: 0;
+    // transform: translate3d(-50%,-50%,0);
+    cursor: pointer;
+    transition: all @anim_timing_func;
+    &:not(.disabled):not(.active):hover{
+      // font-size: 22px;
+    }
+  }
+  .ng-pop-popout-footer{
+    padding: 20px 30px;
+    border-top: 1px solid @color_light2;
+    text-align: right;
+  }
+  }
+  
+}
