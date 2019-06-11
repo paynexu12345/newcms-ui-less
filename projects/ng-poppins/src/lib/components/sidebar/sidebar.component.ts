@@ -1,22 +1,22 @@
-import { Component, OnInit, Input, ElementRef } from "@angular/core";
-import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
-import { SideBarConfig, DEFAULT_SIDEBAR_CONFIG } from "./class";
-import { hightlightMenuByRouter } from "./highlightMenu.func";
+import {Component, OnInit, Input, ElementRef} from "@angular/core";
+import {Router, ActivatedRoute, NavigationEnd} from "@angular/router";
+import {SideBarConfig, EXAMPLE_SIDEBAR_CONFIG} from "./class";
+import {hightlightMenuByRouter} from "./highlightMenu.func";
 import
 {
   PageModeService,
   PAGE_MODE_SMALL,
   PAGE_MODE_LARGE
 } from '../page-mode';
-import { commonInitCfg, CSS_CLASS_NAME_PREFIX } from '../comp-utils';
-import { BaseComponent } from '../base';
-@Component( {
+import {commonInitCfg, CSS_CLASS_NAME_PREFIX} from '../comp-utils';
+import {BaseComponent} from '../base';
+@Component({
   selector: 'ng-pop-sidebar',
   templateUrl: './sidebar.component.html'
-} )
+})
 export class NgPopSidebarComponent extends BaseComponent implements OnInit
 {
-  constructor (
+  constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public elementRef: ElementRef,
@@ -27,27 +27,27 @@ export class NgPopSidebarComponent extends BaseComponent implements OnInit
   }
   PAGE_MODE_LARGE = PAGE_MODE_LARGE;
   PAGE_MODE_SMALL = PAGE_MODE_SMALL;
-  _config: SideBarConfig = DEFAULT_SIDEBAR_CONFIG;
+  _config: SideBarConfig = EXAMPLE_SIDEBAR_CONFIG;
   rootCssClass = CSS_CLASS_NAME_PREFIX + 'sidebar';
   reservedCssClasses: string[] = [];
-  @Input( 'config' )
-  set config ( val )
+  @Input('config')
+  set config(val)
   {
-    commonInitCfg( this, val );
+    commonInitCfg(this, val);
   }
-  get config ()
+  get config()
   {
     return this._config;
   }
-  ngOnInit ()
+  ngOnInit()
   {
-    hightlightMenuByRouter( this.router, this.config.menus );
-    this.router.events.subscribe( event =>
+    hightlightMenuByRouter(this.router, this.config.menus);
+    this.router.events.subscribe(event =>
     {
-      if ( event instanceof NavigationEnd )
+      if(event instanceof NavigationEnd)
       {
-        hightlightMenuByRouter( this.router, this.config.menus );
+        hightlightMenuByRouter(this.router, this.config.menus);
       }
-    } );
+    });
   }
 }

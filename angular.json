@@ -167,6 +167,7 @@
               "projects/ng-poppins/src/lib/styles/button.less",
               "projects/ng-poppins/src/lib/styles/carousel.less",
               "projects/ng-poppins/src/lib/styles/card.less",
+              "projects/ng-poppins/src/lib/styles/form.less",
               "projects/ng-poppins/src/lib/styles/header.less",
               "projects/ng-poppins/src/lib/styles/layout.less",
               "projects/ng-poppins/src/lib/styles/link.less",
@@ -174,7 +175,8 @@
               "projects/ng-poppins/src/lib/styles/tab.less",
               "projects/ng-poppins/src/lib/styles/table.less",
               "projects/ng-poppins/src/lib/styles/select.less",
-              "projects/ng-poppins/src/lib/styles/btn-group.less"
+              "projects/ng-poppins/src/lib/styles/btn-group.less",
+              "projects/ng-poppins/src/lib/styles/popout.less"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js"

@@ -36,6 +36,11 @@ export function commonInitCfg(component, cfg)
       }
       component.rootCssClass = t.join(" ");
     }
+    if(!component._config.isDisabled)
+    {
+      component.isActive = component._config.isActive;
+    }
+    component.isDisabled = component._config.isDisabled;
   }
 }
 export function applyMixins(derivedCtor: any, baseCtors: any[])
@@ -59,4 +64,21 @@ export function filterActiveItem<T>(items: T[]): T
     ret = items[0];
   }
   return ret;
+}
+export function checkUrlIsOutLink(url: string)
+{
+  if(url)
+  {
+    if(url.indexOf("http://") >= 0 || url.indexOf("https://") >= 0)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  } else
+  {
+    return false;
+  }
 }

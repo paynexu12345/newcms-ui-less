@@ -1,35 +1,51 @@
 <table [class]="rootCssClass">
   <thead>
     <tr>
-      <th *ngIf="config.showBatchSelect"></th>
+      <th class="cb" *ngIf="config.showBatchSelect && timeStamp">
+        <ng-pop-checkbox type="1" [name]="'checkAll_' + timeStamp"></ng-pop-checkbox>
+      </th>
       <th *ngFor="let header of config.headers" [style.width]="header.width">{{header.text}}</th>
-      <th></th>
+      <th class="op"></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let rowData of containerComp.data">
-      <td *ngIf="config.showBatchSelect"></td>
+      <td class="cb" *ngIf="config.showBatchSelect && timeStamp">
+        <ng-pop-checkbox type="2" [name]="'checkAll_' +
+          timeStamp"></ng-pop-checkbox>
+      </td>
       <td *ngFor="let header of config.headers">
         <ng-container *ngFor="let field of header.fields">
-          <ng-container *ngIf="field.type == TEXT_FIELD_TYPE">
-            {{rowData[field.key]}}
-          </ng-container>
-          <ng-container *ngIf="field.type == TEXT_LINK_FIELD_TYPE">
+          <ng-container *ngIf="field.type == TEXT_FIELD_TYPE || field.type ==
+            TEXT_LINK_FIELD_TYPE">
+            <div [title]="rowData[field.linkKey] || ''" [class.link]="field.type
+              == TEXT_LINK_FIELD_TYPE"
+              (click)="clickField(rowData[field.linkKey],field.type ==
+              TEXT_LINK_FIELD_TYPE)"
+              [title]="rowData[field.key] || ''">
               {{rowData[field.key]}}
+            </div>
           </ng-container>
           <ng-container *ngIf="field.type == CHECKBOX_FIELD_TYPE">
-            
           </ng-container>
-          <ng-container *ngIf="field.type == IMAGE_FIELD_TYPE">
-            <img [src]="rowData[field.key]" alt="image">
+          <ng-container *ngIf="field.type == IMAGE_FIELD_TYPE || field.type ==
+            IMAGE_LINK_FIELD_TYPE">
+            <div [title]="rowData[field.linkKey] || ''"
+              [class.image-link]="field.type == IMAGE_LINK_FIELD_TYPE"
+              (click)="clickField(rowData[field.linkKey],field.type ==
+              IMAGE_LINK_FIELD_TYPE)">
+              <img class="ng-pop-table-image-thumbnail"
+                [src]="rowData[field.key]" ngPopImageLoadErrorHandler
+                alt="image">
+            </div>
           </ng-container>
-          <ng-container *ngIf="field.type == IMAGE_LINK_FIELD_TYPE">
-            
-          </ng-container>
-          
         </ng-container>
       </td>
-      <td></td>
+      <td class="op">
+        <ng-pop-btn-group [config]="rowData.btnGroup || config.btnGroup"
+          (clickBtn)="clickBtn($event,rowData)">
+        </ng-pop-btn-group>
+      </td>
     </tr>
   </tbody>
 </table>

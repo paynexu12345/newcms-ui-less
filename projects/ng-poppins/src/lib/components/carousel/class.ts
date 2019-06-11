@@ -1,6 +1,7 @@
-import { NgPopBaseConfig } from "../base";
+import {NgPopBaseConfig} from "../base";
 
-export class CarouselConfig implements NgPopBaseConfig {
+export class CarouselConfig implements NgPopBaseConfig
+{
   width?: number;
   height: number;
   activeIndex?: number;
@@ -8,7 +9,7 @@ export class CarouselConfig implements NgPopBaseConfig {
   autoPlayInterval?: number;
   cssClasses?: string[];
 }
-export const DEFAULT_CAROUSEL_CONFIG: CarouselConfig = {
+export const EXAMPLE_CAROUSEL_CONFIG: CarouselConfig = {
   width: 400,
   height: 400,
   activeIndex: 1,

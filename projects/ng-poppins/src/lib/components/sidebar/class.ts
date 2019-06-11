@@ -1,6 +1,7 @@
-import { NgPopBaseConfig } from '../base';
+import {NgPopBaseConfig} from '../base';
 
-export class Menu {
+export class Menu
+{
   id?: number;
   /**
    * The text show in sidebar
@@ -28,11 +29,12 @@ export class Menu {
   children?: Menu[];
   permissionRels?: string[];
 }
-export class SideBarConfig implements NgPopBaseConfig {
+export class SideBarConfig implements NgPopBaseConfig
+{
   menus: Menu[];
   cssClasses?: string[];
 }
-export const DEFAULT_SIDEBAR_CONFIG: SideBarConfig = {
+export const EXAMPLE_SIDEBAR_CONFIG: SideBarConfig = {
   menus: [],
   cssClasses: []
 }

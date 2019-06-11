@@ -1,4 +1,5 @@
 // TODOs:scroll when up down key
+// TODOS:support group
 import
 {
   Component,
@@ -8,8 +9,8 @@ import
   OnDestroy,
   forwardRef
 } from "@angular/core";
-import {commonInitCfg, filterActiveItem} from "../comp-utils";
-import {DEFAULT_SELECT_CONFIG, NgPopSelectItem} from "./class";
+import {commonInitCfg} from "../comp-utils";
+import {EXAMPLE_SELECT_CONFIG, NgPopSelectItem} from "./class";
 import {NgPopSelectDropdownItemComponent} from "./select-dropdown-item/select-dropdown-item.component";
 import {NgPopSelectDefaultComponent} from ".";
 import {NgPopSelectIconComponent} from "./select-icon/select-icon.component";
@@ -17,7 +18,6 @@ import {NgPopSelectService} from "./select.service";
 import {NgPopSelectInputComponent} from "./select-input/select-input.component";
 import {ContainerComponent} from "../base";
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from "@angular/forms";
-import {deepCopy} from "../../utils";
 
 @Component({
   selector: "ng-pop-select",
@@ -40,7 +40,7 @@ export class NgPopSelectComponent
   {
     super();
   }
-  _config = DEFAULT_SELECT_CONFIG;
+  _config = EXAMPLE_SELECT_CONFIG;
   rootCssClass = "ng-pop-select";
   defaultItemComp: NgPopSelectDefaultComponent;
   iconItemComp: NgPopSelectIconComponent;
@@ -51,7 +51,7 @@ export class NgPopSelectComponent
   set config(val)
   {
     commonInitCfg(this, val);
-    this.items = deepCopy(this.config.items);
+    this.items = [...this.config.items];
     //This value would be overwriten by the value in writeValue method, and the function of this value is to set a default value if no ngModel attribute is bind
     this.activeItem = this.items[0];
   }

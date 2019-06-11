@@ -3,11 +3,9 @@
 .ng-pop-btn-group {
   position: relative;
   display: inline-block;
-  vertical-align: middle;
   height: 32px;
   line-height: 32px;
-  padding: 0 32px 0 0;
-  background: @color_light2;
+  vertical-align: middle;
   z-index: 10;
   .btn {
     border-radius: 0;
@@ -16,7 +14,17 @@
     background: darken(@c1, 5%);
     opacity: 1;
   }
+  .ng-pop-btn-group-default-wrapper{
+    position: relative;
+    height: 32px;
+    padding: 0 32px 0 0;
+    background: @color_light2;;
+    border-radius: 4px;
+    overflow: hidden;
+  }
   .ng-pop-btn-group-default {
+    height: 32px;
+    overflow: hidden;
   }
   .ng-pop-btn-group-arrow {
     position: absolute;

@@ -1,16 +1,18 @@
-import { NgPopBaseConfig } from "../base";
+import {NgPopBaseConfig} from "../base";
 
-export class Breadcrumb {
+export class Breadcrumb
+{
   name: string;
   routerLink?: string;
   queryParams?: Object;
 }
-export class BreadcrumbConfig implements NgPopBaseConfig {
+export class BreadcrumbConfig implements NgPopBaseConfig
+{
   items: Breadcrumb[];
   cssClasses?: string[];
 }
 
-export const DEFAULT_BREADCRUMB_CONFIG: BreadcrumbConfig = {
+export const EXAMPLE_BREADCRUMB_CONFIG: BreadcrumbConfig = {
   items: [],
   cssClasses: []
 };

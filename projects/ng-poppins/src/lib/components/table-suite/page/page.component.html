@@ -1,3 +1,29 @@
-<p>
-  page works!
-</p>
+<div [class]="rootCssClass">
+  <ul class="ng-pop-table-page-list">
+    <li *ngIf="currentPage != pages[0]" class="ng-pop-table-page-item st1">
+      <a href="javascript:;" (click)="selectPage($event, 1)">‹‹</a>
+    </li>
+    <li *ngIf="currentPage != pages[0]" class="ng-pop-table-page-item st1">
+      <a href="javascript:;" (click)="selectPage($event, currentPage - 1)">‹</a>
+    </li>
+    <li [class.active]="page == currentPage" *ngFor="let page of pages"
+      class="ng-pop-table-page-item">
+      <a href="javascript:;" (click)="selectPage($event, page)">{{page}}</a>
+    </li>
+    <li *ngIf="currentPage != pages[pages.length - 1]"
+      class="ng-pop-table-page-item st1">
+      <a href="javascript:;" (click)="selectPage($event, currentPage + 1)">›</a>
+    </li>
+    <li *ngIf="currentPage != pages[pages.length - 1]"
+      class="ng-pop-table-page-item st1">
+      <a href="javascript:;" (click)="selectPage($event, totalPage)">››</a>
+    </li>
+  </ul>
+  <div *ngIf="showPagination" class="pageIndex">
+    Page
+    <input #pageNumber class="page-input" type="number" [min]="totalPage> 0 ? 1
+    : 0" [max]="totalPage"
+    [(ngModel)]="currentPage" (keyup.enter)="enterPage($event,
+    pageNumber.value)">
+  </div>
+</div>

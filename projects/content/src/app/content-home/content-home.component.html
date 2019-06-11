@@ -37,8 +37,7 @@
         <!-- <div class="tabset-header"> -->
         <ng-pop-tab-content-item
           [item]="tabConfig1.items[0]"
-          (activate)="onTabItemActivate()"
-        >
+          (activate)="onTabItemActivate()">
           Tab1 content
         </ng-pop-tab-content-item>
         <ng-pop-tab-content-item [item]="tabConfig1.items[1]">
@@ -146,18 +145,25 @@
       <div>
         <ng-pop-btn-group
           [config]="btnGroupConfig"
-          (clickBtn)="clickBtn($event)"
-        ></ng-pop-btn-group>
+          (clickBtn)="clickBtn($event)"></ng-pop-btn-group>
       </div>
     </div>
   </div>
   <div class="card">
-      <div class="header">Table Suite</div>
-      <div class="body">
-          <ng-pop-table-suite
-            [config]="tableSuiteConfig"
-            [data]="tableSuiteData"
-          ></ng-pop-table-suite>
-      </div>
+    <div class="header">Table Suite</div>
+    <div class="body">
+      <ng-pop-table-suite
+        [config]="tableSuiteConfig"
+        [data]="tableSuiteData"></ng-pop-table-suite>
     </div>
+  </div>
+  <div class="card">
+    <div class="header">Popout</div>
+    <div class="body">
+      <button class="btn main" (click)="showPopout(test1PopoutId)">Show Test1</button>
+      <ng-pop-popout (init)="test1PopoutId= $event">
+        Test1 content
+      </ng-pop-popout>
+    </div>
+  </div>
 </layout1>

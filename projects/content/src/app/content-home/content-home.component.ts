@@ -1,23 +1,27 @@
-import { Component, OnInit } from "@angular/core";
-import { Layout1Config } from "../layout/layout.class";
-import { geneNavConfig } from "../header/generateActiveNavItem";
-import { NAVITEM_ID_CONTENT } from "src/app-config";
-import {
+import {Component, OnInit} from "@angular/core";
+import {Layout1Config} from "../layout/layout.class";
+import {geneNavConfig} from "../header/generateActiveNavItem";
+import {NAVITEM_ID_CONTENT} from "src/app-config";
+import
+{
   PageModeService,
   NgPopSelectConfig,
-  DEFAULT_SELECT_CONFIG
+  EXAMPLE_SELECT_CONFIG
 } from "projects/ng-poppins/src/public-api";
-import { BreadcrumbConfig } from "projects/ng-poppins/src/lib/components/breadcrumb";
-import { MENUS_CONTENT } from "../../content-config";
-import {
+import {BreadcrumbConfig} from "projects/ng-poppins/src/lib/components/breadcrumb";
+import {MENUS_CONTENT} from "../../content-config";
+import
+{
   NgPopTabConfig,
-  DEFAULT_TAB_CONFIG
+  EXAMPLE_TAB_CONFIG
 } from "projects/ng-poppins/src/lib/components/tabset";
-import {
+import
+{
   NgPopBtnGroupConfig,
-  DEFAULT_BTN_GROUP_CONFIG
+  EXAMPLE_BTN_GROUP_CONFIG
 } from "projects/ng-poppins/src/lib/components/btn-group/class";
-import { DEFAULT_TABLE_SUITE_CONFIG, TABLE_DATA } from 'projects/ng-poppins/src/lib/components/table-suite/class';
+import {EXAMPLE_TABLE_SUITE_CONFIG, EXAMPLE_TABLE_DATA} from 'projects/ng-poppins/src/lib/components/table-suite/class';
+import {NgPopPopoutService} from 'projects/ng-poppins/src/lib/components/popout/popout.service';
 // import { CmsLayout1Config } from 'project-shared/layout/layout.class';
 // import { generateActiveNavItem } from 'project-shared/components/cms-header/cms-header-nav/generateActiveNavItem';
 // import { ID_CONTENT, FROM_INDEX } from 'project-shared/constant';
@@ -30,8 +34,9 @@ import { DEFAULT_TABLE_SUITE_CONFIG, TABLE_DATA } from 'projects/ng-poppins/src/
   templateUrl: "./content-home.component.html",
   styleUrls: ["./content-home.component.less"]
 })
-export class ContentHomeComponent implements OnInit {
-  constructor(public pageModeService: PageModeService) {}
+export class ContentHomeComponent implements OnInit
+{
+  constructor(public pageModeService: PageModeService, public popoutService: NgPopPopoutService) {}
   breadcrumbConfig: BreadcrumbConfig = {
     items: [
       {
@@ -56,8 +61,8 @@ export class ContentHomeComponent implements OnInit {
       cssClasses: ["c1"]
     }
   };
-  selectConfig: NgPopSelectConfig = DEFAULT_SELECT_CONFIG;
-  // selectConfig2: NgPopSelectConfig = Object.assign({},DEFAULT_SELECT_CONFIG,{cssClasses:["white"]}) ;
+  selectConfig: NgPopSelectConfig = EXAMPLE_SELECT_CONFIG;
+  // selectConfig2: NgPopSelectConfig = Object.assign({},EXAMPLE_SELECT_CONFIG,{cssClasses:["white"]}) ;
   selectConfig2: NgPopSelectConfig = {
     width: "160px",
     items: [
@@ -75,21 +80,28 @@ export class ContentHomeComponent implements OnInit {
     ],
     textKey: "name",
     idKey: "id",
-    cssClasses: ["white"]
-    // disabled:true
+    cssClasses: ["white"],
+    isDisabled: true
   };
-  tabConfig1: NgPopTabConfig = Object.assign({}, DEFAULT_TAB_CONFIG);
+  tabConfig1: NgPopTabConfig = Object.assign({}, EXAMPLE_TAB_CONFIG);
   btnGroupConfig: NgPopBtnGroupConfig = Object.assign(
     {},
-    DEFAULT_BTN_GROUP_CONFIG
+    EXAMPLE_BTN_GROUP_CONFIG
   );
-  tableSuiteConfig = DEFAULT_TABLE_SUITE_CONFIG;
-  tableSuiteData = TABLE_DATA;
-  onTabItemActivate() {
+  tableSuiteConfig = EXAMPLE_TABLE_SUITE_CONFIG;
+  tableSuiteData = EXAMPLE_TABLE_DATA;
+  test1PopoutId = null;
+  onTabItemActivate()
+  {
     //  alert(1);
   }
-  clickBtn($event) {
+  clickBtn($event)
+  {
     alert($event.id);
+  }
+  showPopout(id)
+  {
+    this.popoutService.show(id);
   }
   ngOnInit() {}
 }

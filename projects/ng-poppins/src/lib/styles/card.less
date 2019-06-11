@@ -15,6 +15,9 @@
     padding: 0 @p;
     font-size: @fz;
     color: @color_dark1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     font-family: @font_m;
     .r {
       position: absolute;
@@ -26,7 +29,7 @@
   .body {
     padding: @p;
   }
-  .card .border {
+  .border {
     border-bottom: 1px solid @color_light1;
   }
 

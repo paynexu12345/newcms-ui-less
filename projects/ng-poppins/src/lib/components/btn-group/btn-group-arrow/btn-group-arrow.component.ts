@@ -1,6 +1,7 @@
 import {Component, OnInit, HostListener, OnDestroy} from "@angular/core";
 import {SubComponent} from "../../base";
 import {NgPopBtnGroupComponent} from "../btn-group.component";
+import {NgPopBtnGroupService} from '../btn-group.service';
 
 @Component({
   selector: "ng-pop-btn-group-arrow",
@@ -10,7 +11,7 @@ import {NgPopBtnGroupComponent} from "../btn-group.component";
 export class NgPopBtnGroupArrowComponent extends SubComponent
   implements OnInit, OnDestroy
 {
-  constructor(public containerComp: NgPopBtnGroupComponent)
+  constructor(public containerComp: NgPopBtnGroupComponent, public btnGroupService: NgPopBtnGroupService)
   {
     super();
   }
@@ -19,7 +20,11 @@ export class NgPopBtnGroupArrowComponent extends SubComponent
   onclick($event)
   {
     $event.stopPropagation();
-    this.containerComp.isActive = !this.containerComp.isActive;
+    if(!this.containerComp.isDisabled)
+    {
+      this.containerComp.isActive = !this.containerComp.isActive;
+      this.btnGroupService.deactivateAllExcept(this.containerComp);
+    }
   }
 
   ngOnInit()

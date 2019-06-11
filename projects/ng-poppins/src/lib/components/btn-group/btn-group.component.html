@@ -1,12 +1,10 @@
 <div [class]="rootCssClass">
-  <ng-pop-btn-group-default-item
-    [item]="activeItem"
-  ></ng-pop-btn-group-default-item>
-  <ng-pop-btn-group-arrow></ng-pop-btn-group-arrow>
+  <div class="ng-pop-btn-group-default-wrapper">
+    <ng-pop-btn-group-default-item [item]="activeItem"></ng-pop-btn-group-default-item>
+    <ng-pop-btn-group-arrow></ng-pop-btn-group-arrow>
+  </div>
+  <div class="ng-pop-mask-disable" *ngIf="isDisabled"></div>
   <ng-pop-btn-group-dropdown *ngIf="isActive">
-    <ng-pop-btn-group-dropdown-item
-      *ngFor="let item of dropdownItems"
-      [item]="item"
-    ></ng-pop-btn-group-dropdown-item>
+    <ng-pop-btn-group-dropdown-item *ngFor="let item of dropdownItems" [item]="item"></ng-pop-btn-group-dropdown-item>
   </ng-pop-btn-group-dropdown>
 </div>

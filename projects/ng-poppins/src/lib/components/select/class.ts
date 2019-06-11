@@ -1,5 +1,5 @@
 
-import { NgPopBaseConfig } from '../base';
+import {NgPopBaseConfig} from '../base';
 
 export class InternalNgPopSelectItem
 {
@@ -24,7 +24,7 @@ export class NgPopSelectConfig implements NgPopBaseConfig
   isDisabled?: boolean;
 }
 
-export const DEFAULT_SELECT_CONFIG: NgPopSelectConfig = {
+export const EXAMPLE_SELECT_CONFIG: NgPopSelectConfig = {
   width: "160px",
   items: [
     {

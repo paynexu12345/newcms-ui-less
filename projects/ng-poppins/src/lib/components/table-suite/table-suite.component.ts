@@ -2,8 +2,8 @@ import {Component, OnInit, Input} from '@angular/core';
 import {ContainerComponent} from '../base';
 import {NgPopTableComponent} from './table/table.component';
 import {NgPopTableSuitePageComponent} from './page/page.component';
-import { commonInitCfg } from '../comp-utils';
-import { TableSuiteConfig, DEFAULT_TABLE_SUITE_CONFIG } from './class';
+import {commonInitCfg} from '../comp-utils';
+import {TableSuiteConfig, EXAMPLE_TABLE_SUITE_CONFIG} from './class';
 
 @Component({
   selector: 'ng-pop-table-suite',
@@ -20,7 +20,7 @@ export class NgPopTableSuiteComponent extends ContainerComponent<null> implement
   pageRef: NgPopTableSuitePageComponent;
   rootCssClass = "ng-pop-table-suite";
   _data = [];
-  _config:TableSuiteConfig = DEFAULT_TABLE_SUITE_CONFIG;
+  _config: TableSuiteConfig = EXAMPLE_TABLE_SUITE_CONFIG;
   @Input()
   set data(val)
   {
@@ -32,12 +32,15 @@ export class NgPopTableSuiteComponent extends ContainerComponent<null> implement
     return this._data;
   }
   @Input()
-  set config(val){
-    if(val){
-      commonInitCfg(this,val);
+  set config(val)
+  {
+    if(val)
+    {
+      commonInitCfg(this, val);
     }
   }
-  get config(){
+  get config()
+  {
     return this._config;
   }
   ngOnInit()

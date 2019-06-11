@@ -20,6 +20,7 @@ export interface Configurable
  */
 export class BaseComponent
 {
+  timeStamp = new Date().getTime();
   protected _isDisabled = false;
   public get isDisabled()
   {
@@ -65,6 +66,24 @@ export class BaseComponent
       this.deactivate.emit(this);
     }
     this._isActive = false;
+  }
+  protected commonSetDisabled(val)
+  {
+    if(val)
+    {
+      if('false' == val)
+      {
+        this._isDisabled = false;
+      }
+      else
+      {
+        this._isDisabled = true;
+      }
+    }
+    else
+    {
+      this._isDisabled = false;
+    }
   }
   findPrevNotDisabled<T extends BaseComponent>(arr: T[], from: number): T | null
   {
@@ -147,6 +166,7 @@ export class ContainerComponent<T> extends BaseComponent implements Configurable
   rootCssClass = "";
   mainSubComps: T[] = [];
   _config: {[propName: string]: any};
+
   @Input("config")
   set config(val)
   {
@@ -330,7 +350,6 @@ export class PopupLayerComponent extends BaseComponent
 export interface NgPopBaseConfig
 {
   cssClasses?: string[];
-  items?: {[s: string]: any}[];
   isActive?: boolean;
   isDisabled?: boolean;
 }

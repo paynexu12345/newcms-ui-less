@@ -1,4 +1,5 @@
 <div [class]="rootCssClass" [class.active]="isActive" [class.disabled]="config.isDisabled" [style.width]="config.width">
+  <div class="ng-pop-mask-disable" *ngIf="isDisabled"></div>
   <div class="ng-pop-select-default-container">
     <ng-pop-select-default *ngIf="activeItem && !isActive" [item]="activeItem"></ng-pop-select-default>
     <ng-pop-select-input *ngIf="isActive"></ng-pop-select-input>

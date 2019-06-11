@@ -1,4 +1,9 @@
 @import "base.less";
 .link{
   color: @color_main;
+  cursor: pointer;
+  transition: color @anim_timing_func;
+  &:hover{
+    color: lighten(@color_main,10%);
+  }
 }

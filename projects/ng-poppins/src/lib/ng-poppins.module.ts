@@ -33,11 +33,20 @@ import {NgPopTabContentItemComponent} from './components/tabset/tab-content-item
 import {NgPopTableSuiteComponent} from './components/table-suite/table-suite.component';
 import {NgPopTableComponent} from './components/table-suite/table/table.component';
 import {NgPopTableSuitePageComponent} from './components/table-suite/page/page.component';
+import {NgPopTableSuitePageItemComponent} from './components/table-suite/page/page-item/page-item.component';
 import {NgPopBtnGroupComponent} from './components/btn-group/btn-group.component';
 import {NgPopBtnGroupDefaultItemComponent} from './components/btn-group/btn-group-default-item/btn-group-default-item.component';
 import {NgPopBtnGroupDropdownComponent} from './components/btn-group/btn-group-dropdown/btn-group-dropdown.component';
 import {NgPopBtnGroupDropdownItemComponent} from './components/btn-group/btn-group-dropdown-item/btn-group-dropdown-item.component';
 import {NgPopBtnGroupArrowComponent} from './components/btn-group/btn-group-arrow/btn-group-arrow.component';
+import {NgPopImageLoadErrorHandlerDirective} from './components/image-load-handler/image-load-error-handler.directive';
+import {NgPopImageSrcEmptyHandlerDirective} from './components/image-load-handler/image-src-empty-handler.directive';
+import {NgPopBtnGroupService} from './components/btn-group/btn-group.service';
+import {NgPopCheckboxComponent} from './components/checkbox/checkbox.component';
+import {NgPopCheckBoxService} from './components/checkbox/checkbox.service';
+import {NgPopPopoutComponent} from './components/popout/popout.component';
+import {NgPopPopoutService} from './components/popout/popout.service';
+
 
 @NgModule({
   declarations: [
@@ -63,11 +72,16 @@ import {NgPopBtnGroupArrowComponent} from './components/btn-group/btn-group-arro
     NgPopTableSuiteComponent,
     NgPopTableComponent,
     NgPopTableSuitePageComponent,
+    NgPopTableSuitePageItemComponent,
     NgPopBtnGroupComponent,
     NgPopBtnGroupDefaultItemComponent,
     NgPopBtnGroupDropdownComponent,
     NgPopBtnGroupDropdownItemComponent,
-    NgPopBtnGroupArrowComponent
+    NgPopBtnGroupArrowComponent,
+    NgPopImageLoadErrorHandlerDirective,
+    NgPopImageSrcEmptyHandlerDirective,
+    NgPopCheckboxComponent,
+    NgPopPopoutComponent,
   ],
   imports: [CommonModule, RouterModule, BrowserAnimationsModule, FormsModule],
   exports: [
@@ -94,12 +108,14 @@ import {NgPopBtnGroupArrowComponent} from './components/btn-group/btn-group-arro
     NgPopTableSuiteComponent,
     NgPopTableComponent,
     NgPopTableSuitePageComponent,
+    NgPopBtnGroupArrowComponent,
     NgPopBtnGroupComponent,
     NgPopBtnGroupDefaultItemComponent,
     NgPopBtnGroupDropdownComponent,
     NgPopBtnGroupDropdownItemComponent,
-    NgPopBtnGroupArrowComponent
+    NgPopCheckboxComponent,
+    NgPopPopoutComponent
   ],
-  providers: [PageModeService, NgPopSelectService]
+  providers: [PageModeService, NgPopSelectService, NgPopBtnGroupService, NgPopCheckBoxService, NgPopPopoutService]
 })
 export class NgPoppinsModule {}

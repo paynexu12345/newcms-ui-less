@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { BreadcrumbConfig, DEFAULT_BREADCRUMB_CONFIG } from "./class";
-import { commonInitCfg } from "../comp-utils";
-import { Configurable } from "../base";
+import {Component, Input, OnInit} from "@angular/core";
+import {BreadcrumbConfig, EXAMPLE_BREADCRUMB_CONFIG} from "./class";
+import {commonInitCfg} from "../comp-utils";
+import {Configurable} from "../base";
 @Component({
   selector: "ng-pop-breadcrumb",
   template: `
@@ -21,17 +21,23 @@ import { Configurable } from "../base";
     </ol>
   `
 })
-export class NgPopBreadcrumbComponent implements Configurable, OnInit {
+export class NgPopBreadcrumbComponent implements Configurable, OnInit
+{
   constructor() {}
   rootCssClass = "ng-pop-breadcrumb";
   reservedCssClasses: string[] = [];
-  _config: BreadcrumbConfig = DEFAULT_BREADCRUMB_CONFIG;
+  _config: BreadcrumbConfig = {
+    items: [],
+    cssClasses: []
+  };
   @Input("config")
-  set config(val) {
+  set config(val)
+  {
     commonInitCfg(this, val);
   }
 
-  get config() {
+  get config()
+  {
     return this._config;
   }
 

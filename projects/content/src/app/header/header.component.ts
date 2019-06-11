@@ -1,13 +1,14 @@
-import { Component, Input } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
-import { NgPopSelectConfig, DEFAULT_SELECT_CONFIG } from 'projects/ng-poppins/src/public-api';
+import {Component, Input} from "@angular/core";
+import {Router, ActivatedRoute} from "@angular/router";
+import {NgPopSelectConfig, EXAMPLE_SELECT_CONFIG} from 'projects/ng-poppins/src/public-api';
 
 @Component({
   selector: "cms-header",
   styleUrls: ["./header.component.css"],
   templateUrl: "./header.component.html"
 })
-export class HeaderComponent {
+export class HeaderComponent
+{
   constructor(
     public router: Router,
     public route: ActivatedRoute,
@@ -18,7 +19,7 @@ export class HeaderComponent {
     // public baseService: BaseService,
     // public authService: AuthService
   ) {}
-  selectConfig:NgPopSelectConfig = DEFAULT_SELECT_CONFIG;
+  selectConfig: NgPopSelectConfig = EXAMPLE_SELECT_CONFIG;
   partnerId = 3;
   toggleMessage = "Toggle navigation";
   partners: any[] = [];
@@ -41,11 +42,13 @@ export class HeaderComponent {
   //   });
   // }
 
-  handleModulesChange($event) {
+  handleModulesChange($event)
+  {
     location.href = $event.url;
   }
 
-  ngOnInit() {
+  ngOnInit()
+  {
     // if (this.globalService.isAdminUser)
     //   this.settingService.getPartners().then(res => {
     //     if (!res.message) {
